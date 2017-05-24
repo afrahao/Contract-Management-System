@@ -1,0 +1,274 @@
+C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqld.exe, Version: 8.0.0-dmr-log (MySQL Community Server (GPL)). started with:
+TCP Port: 3306, Named Pipe: MySQL
+Time                 Id Command    Argument
+2017-04-03T13:23:21.171378Z	   10 Query	CREATE USER 'dbadmin'@'localhost' IDENTIFIED WITH 'mysql_native_password' AS '<secret>'
+2017-04-03T13:23:35.239595Z	   10 Query	show grants for dbadmin@localhost
+2017-04-03T13:24:06.266978Z	   10 Query	CREATE USER 'superadmin'@'%' IDENTIFIED WITH 'mysql_native_password' AS '<secret>'
+2017-04-03T13:24:51.127696Z	   10 Query	CREATE USER 'mysqladmin'@'%.mysqltutorial.org' IDENTIFIED WITH 'mysql_native_password' AS '<secret>'
+2017-04-03T13:27:01.064462Z	   10 Query	create user remote
+2017-04-03T13:27:17.506678Z	   10 Query	show grants for remote
+2017-04-03T13:27:40.810253Z	   10 Query	create user 'api@localhost'
+2017-04-03T13:27:56.582138Z	   10 Query	show grants for 'api@localhost'
+2017-04-03T13:29:15.144977Z	   10 Query	create user remote
+2017-04-03T13:29:53.571561Z	   10 Query	SELECT DATABASE()
+2017-04-03T13:29:53.590725Z	   10 Init DB	mysql
+2017-04-03T13:30:41.269929Z	   10 Query	update user
+set password=password('dolphin')
+where user='dbadmin' and
+ host='localhost'
+2017-04-03T13:31:50.842540Z	   10 Query	update user
+set password = password('dolphin')
+where user='dbadmin' and 
+host='localhost'
+2017-04-03T13:33:08.995892Z	   11 Connect	root@localhost on  using TCP/IP
+2017-04-03T13:33:08.995938Z	   11 Connect	Access denied for user 'root'@'localhost' (using password: NO)
+2017-04-03T13:33:14.597704Z	   12 Connect	root@localhost on  using TCP/IP
+2017-04-03T13:33:14.598134Z	   12 Query	set autocommit=1
+2017-04-03T13:33:14.598489Z	   12 Query	SET SESSION TRANSACTION ISOLATION LEVEL REPEATABLE READ
+2017-04-03T13:33:14.600749Z	   12 Query	SHOW SESSION VARIABLES LIKE 'lower_case_table_names'
+2017-04-03T13:33:14.605992Z	   12 Query	SELECT current_user()
+2017-04-03T13:33:14.651050Z	   12 Query	SET CHARACTER SET utf8
+2017-04-03T13:33:14.651435Z	   12 Query	SET NAMES utf8
+2017-04-03T13:33:14.652079Z	   12 Query	SHOW SESSION VARIABLES LIKE 'sql_mode'
+2017-04-03T13:33:14.655731Z	   12 Query	SELECT CONNECTION_ID()
+2017-04-03T13:33:14.656198Z	   12 Query	SHOW SESSION STATUS LIKE 'Ssl_cipher'
+2017-04-03T13:33:14.657934Z	   12 Query	set autocommit=1
+2017-04-03T13:33:14.659854Z	   13 Connect	root@localhost on  using TCP/IP
+2017-04-03T13:33:14.660092Z	   13 Query	set autocommit=1
+2017-04-03T13:33:14.660287Z	   13 Query	SET SESSION TRANSACTION ISOLATION LEVEL REPEATABLE READ
+2017-04-03T13:33:14.660471Z	   13 Query	SHOW SESSION VARIABLES LIKE 'lower_case_table_names'
+2017-04-03T13:33:14.663946Z	   13 Query	SELECT current_user()
+2017-04-03T13:33:14.664603Z	   13 Query	SET CHARACTER SET utf8
+2017-04-03T13:33:14.664986Z	   13 Query	SET NAMES utf8
+2017-04-03T13:33:14.665397Z	   13 Query	SET SQL_SAFE_UPDATES=1
+2017-04-03T13:33:14.665837Z	   13 Query	SELECT CONNECTION_ID()
+2017-04-03T13:33:14.666325Z	   13 Query	SHOW SESSION STATUS LIKE 'Ssl_cipher'
+2017-04-03T13:33:14.668120Z	   13 Query	set autocommit=1
+2017-04-03T13:33:14.668405Z	   13 Query	SHOW SESSION VARIABLES LIKE 'sql_mode'
+2017-04-03T13:33:14.670955Z	   13 Query	SHOW SESSION VARIABLES LIKE 'version_comment'
+2017-04-03T13:33:14.673761Z	   13 Query	SHOW SESSION VARIABLES LIKE 'version'
+2017-04-03T13:33:14.681694Z	   13 Query	SELECT current_user()
+2017-04-03T13:33:14.682019Z	   13 Query	SHOW SESSION VARIABLES LIKE 'lower_case_table_names'
+2017-04-03T13:33:16.325968Z	   12 Query	SHOW DATABASES
+2017-04-03T13:33:17.856675Z	   12 Query	SHOW DATABASES
+2017-04-03T13:33:17.914161Z	   13 Query	SHOW SESSION VARIABLES LIKE 'version_compile_os'
+2017-04-03T13:33:17.920110Z	   13 Query	SHOW SESSION VARIABLES LIKE 'offline_mode'
+2017-04-03T13:33:17.954413Z	   12 Query	SHOW GLOBAL VARIABLES
+2017-04-03T13:33:18.052443Z	   12 Query	SHOW ENGINES
+2017-04-03T13:33:18.131297Z	   12 Query	show charset
+2017-04-03T13:33:18.296976Z	   12 Query	show collation
+2017-04-03T13:33:18.402165Z	   13 Query	SHOW SESSION VARIABLES LIKE 'wait_timeout'
+2017-04-03T13:33:18.407969Z	   13 Query	SHOW SESSION VARIABLES LIKE 'interactive_timeout'
+2017-04-03T13:33:40.813805Z	   14 Connect	root@localhost on  using TCP/IP
+2017-04-03T13:33:40.814339Z	   14 Query	set autocommit=1
+2017-04-03T13:33:40.814837Z	   14 Query	SET SESSION TRANSACTION ISOLATION LEVEL REPEATABLE READ
+2017-04-03T13:33:40.815328Z	   14 Query	SHOW SESSION VARIABLES LIKE 'lower_case_table_names'
+2017-04-03T13:33:40.819201Z	   14 Query	SELECT current_user()
+2017-04-03T13:33:40.820182Z	   14 Query	SET CHARACTER SET utf8
+2017-04-03T13:33:40.820919Z	   14 Query	SET NAMES utf8
+2017-04-03T13:33:40.821519Z	   14 Query	SHOW SESSION VARIABLES LIKE 'sql_mode'
+2017-04-03T13:33:40.827015Z	   14 Query	SELECT CONNECTION_ID()
+2017-04-03T13:33:40.828131Z	   14 Query	SHOW SESSION STATUS LIKE 'Ssl_cipher'
+2017-04-03T13:33:40.830409Z	   14 Query	set autocommit=1
+2017-04-03T13:33:40.834832Z	   15 Connect	root@localhost on  using TCP/IP
+2017-04-03T13:33:40.836009Z	   15 Query	set autocommit=1
+2017-04-03T13:33:40.837267Z	   15 Query	SET SESSION TRANSACTION ISOLATION LEVEL REPEATABLE READ
+2017-04-03T13:33:40.838006Z	   15 Query	SHOW SESSION VARIABLES LIKE 'lower_case_table_names'
+2017-04-03T13:33:40.842764Z	   15 Query	SELECT current_user()
+2017-04-03T13:33:40.843413Z	   15 Query	SET CHARACTER SET utf8
+2017-04-03T13:33:40.844066Z	   15 Query	SET NAMES utf8
+2017-04-03T13:33:40.845460Z	   15 Query	SET SQL_SAFE_UPDATES=1
+2017-04-03T13:33:40.846171Z	   15 Query	SELECT CONNECTION_ID()
+2017-04-03T13:33:40.846818Z	   15 Query	SHOW SESSION STATUS LIKE 'Ssl_cipher'
+2017-04-03T13:33:40.849129Z	   15 Query	set autocommit=1
+2017-04-03T13:33:40.849885Z	   15 Query	SHOW SESSION VARIABLES LIKE 'sql_mode'
+2017-04-03T13:33:40.855372Z	   15 Query	SHOW SESSION VARIABLES LIKE 'version_comment'
+2017-04-03T13:33:40.863550Z	   15 Query	SHOW SESSION VARIABLES LIKE 'version'
+2017-04-03T13:33:40.871906Z	   15 Query	SELECT current_user()
+2017-04-03T13:33:40.873335Z	   15 Query	SHOW SESSION VARIABLES LIKE 'lower_case_table_names'
+2017-04-03T13:33:41.272213Z	   14 Query	SHOW DATABASES
+2017-04-03T13:33:41.273594Z	   15 Query	SHOW SESSION VARIABLES LIKE 'version_compile_os'
+2017-04-03T13:33:41.274146Z	   14 Query	SHOW DATABASES
+2017-04-03T13:33:41.277109Z	   15 Query	SHOW SESSION VARIABLES LIKE 'offline_mode'
+2017-04-03T13:33:41.290075Z	   15 Query	SHOW SESSION VARIABLES LIKE 'wait_timeout'
+2017-04-03T13:33:41.292387Z	   15 Query	SHOW SESSION VARIABLES LIKE 'interactive_timeout'
+2017-04-03T13:33:41.408830Z	   14 Query	SHOW GLOBAL VARIABLES
+2017-04-03T13:33:41.519492Z	   14 Query	SHOW ENGINES
+2017-04-03T13:33:41.591620Z	   14 Query	show charset
+2017-04-03T13:33:41.765588Z	   14 Query	show collation
+2017-04-03T13:34:02.385245Z	   16 Connect	root@localhost on  using TCP/IP
+2017-04-03T13:34:02.385286Z	   16 Connect	Access denied for user 'root'@'localhost' (using password: NO)
+2017-04-03T13:34:07.308915Z	   17 Connect	root@localhost on  using TCP/IP
+2017-04-03T13:34:07.309152Z	   17 Query	set autocommit=1
+2017-04-03T13:34:07.309335Z	   17 Query	SET SESSION TRANSACTION ISOLATION LEVEL REPEATABLE READ
+2017-04-03T13:34:07.309515Z	   17 Query	SHOW SESSION VARIABLES LIKE 'lower_case_table_names'
+2017-04-03T13:34:07.312938Z	   17 Query	SELECT current_user()
+2017-04-03T13:34:07.313220Z	   17 Query	SET CHARACTER SET utf8
+2017-04-03T13:34:07.313398Z	   17 Query	SET NAMES utf8
+2017-04-03T13:34:07.313602Z	   17 Query	SHOW SESSION VARIABLES LIKE 'sql_mode'
+2017-04-03T13:34:07.316927Z	   17 Query	SELECT CONNECTION_ID()
+2017-04-03T13:34:07.317254Z	   17 Query	SHOW SESSION STATUS LIKE 'Ssl_cipher'
+2017-04-03T13:34:07.319485Z	   17 Query	set autocommit=1
+2017-04-03T13:34:07.321389Z	   18 Connect	root@localhost on  using TCP/IP
+2017-04-03T13:34:07.321691Z	   18 Query	set autocommit=1
+2017-04-03T13:34:07.322226Z	   18 Query	SET SESSION TRANSACTION ISOLATION LEVEL REPEATABLE READ
+2017-04-03T13:34:07.322568Z	   18 Query	SHOW SESSION VARIABLES LIKE 'lower_case_table_names'
+2017-04-03T13:34:07.326393Z	   18 Query	SELECT current_user()
+2017-04-03T13:34:07.326963Z	   18 Query	SET CHARACTER SET utf8
+2017-04-03T13:34:07.327453Z	   18 Query	SET NAMES utf8
+2017-04-03T13:34:07.328002Z	   18 Query	SET SQL_SAFE_UPDATES=1
+2017-04-03T13:34:07.328352Z	   18 Query	SELECT CONNECTION_ID()
+2017-04-03T13:34:07.328957Z	   18 Query	SHOW SESSION STATUS LIKE 'Ssl_cipher'
+2017-04-03T13:34:07.331215Z	   18 Query	set autocommit=1
+2017-04-03T13:34:07.331729Z	   18 Query	SHOW SESSION VARIABLES LIKE 'sql_mode'
+2017-04-03T13:34:07.335269Z	   18 Query	SHOW SESSION VARIABLES LIKE 'version_comment'
+2017-04-03T13:34:07.339003Z	   18 Query	SHOW SESSION VARIABLES LIKE 'version'
+2017-04-03T13:34:07.344572Z	   18 Query	SELECT current_user()
+2017-04-03T13:34:07.345356Z	   18 Query	SHOW SESSION VARIABLES LIKE 'lower_case_table_names'
+2017-04-03T13:34:08.298173Z	   17 Query	SHOW DATABASES
+2017-04-03T13:34:09.508442Z	   17 Query	SHOW DATABASES
+2017-04-03T13:34:09.509599Z	   18 Query	SHOW SESSION VARIABLES LIKE 'version_compile_os'
+2017-04-03T13:34:09.522414Z	   18 Query	SHOW SESSION VARIABLES LIKE 'offline_mode'
+2017-04-03T13:34:09.560474Z	   18 Query	SHOW SESSION VARIABLES LIKE 'wait_timeout'
+2017-04-03T13:34:09.566458Z	   18 Query	SHOW SESSION VARIABLES LIKE 'interactive_timeout'
+2017-04-03T13:34:09.587215Z	   17 Query	SHOW GLOBAL VARIABLES
+2017-04-03T13:34:09.761260Z	   17 Query	SHOW ENGINES
+2017-04-03T13:34:09.952618Z	   17 Query	show charset
+2017-04-03T13:34:10.033683Z	   17 Query	show collation
+2017-04-03T13:34:37.183405Z	   19 Connect	root@localhost on  using TCP/IP
+2017-04-03T13:34:37.183986Z	   19 Query	set autocommit=1
+2017-04-03T13:34:37.184512Z	   19 Query	SET SESSION TRANSACTION ISOLATION LEVEL REPEATABLE READ
+2017-04-03T13:34:37.185012Z	   19 Query	SHOW SESSION VARIABLES LIKE 'lower_case_table_names'
+2017-04-03T13:34:37.189132Z	   19 Query	SELECT current_user()
+2017-04-03T13:34:37.189905Z	   19 Query	SET CHARACTER SET utf8
+2017-04-03T13:34:37.190534Z	   19 Query	SET NAMES utf8
+2017-04-03T13:34:37.191070Z	   19 Query	SHOW SESSION VARIABLES LIKE 'sql_mode'
+2017-04-03T13:34:37.195162Z	   19 Query	SELECT CONNECTION_ID()
+2017-04-03T13:34:37.198911Z	   19 Query	SHOW SESSION STATUS LIKE 'Ssl_cipher'
+2017-04-03T13:34:37.201639Z	   19 Query	set autocommit=1
+2017-04-03T13:34:37.204192Z	   20 Connect	root@localhost on  using TCP/IP
+2017-04-03T13:34:37.205492Z	   20 Query	set autocommit=1
+2017-04-03T13:34:37.206347Z	   20 Query	SET SESSION TRANSACTION ISOLATION LEVEL REPEATABLE READ
+2017-04-03T13:34:37.206961Z	   20 Query	SHOW SESSION VARIABLES LIKE 'lower_case_table_names'
+2017-04-03T13:34:37.211032Z	   20 Query	SELECT current_user()
+2017-04-03T13:34:37.211833Z	   20 Query	SET CHARACTER SET utf8
+2017-04-03T13:34:37.212471Z	   20 Query	SET NAMES utf8
+2017-04-03T13:34:37.213081Z	   20 Query	SET SQL_SAFE_UPDATES=1
+2017-04-03T13:34:37.213677Z	   20 Query	SELECT CONNECTION_ID()
+2017-04-03T13:34:37.214325Z	   20 Query	SHOW SESSION STATUS LIKE 'Ssl_cipher'
+2017-04-03T13:34:37.216548Z	   20 Query	set autocommit=1
+2017-04-03T13:34:37.217254Z	   20 Query	SHOW SESSION VARIABLES LIKE 'sql_mode'
+2017-04-03T13:34:37.222269Z	   20 Query	SHOW SESSION VARIABLES LIKE 'version_comment'
+2017-04-03T13:34:37.226632Z	   20 Query	SHOW SESSION VARIABLES LIKE 'version'
+2017-04-03T13:34:37.233484Z	   20 Query	SELECT current_user()
+2017-04-03T13:34:37.234957Z	   20 Query	SHOW SESSION VARIABLES LIKE 'lower_case_table_names'
+2017-04-03T13:34:37.758481Z	   19 Query	SHOW DATABASES
+2017-04-03T13:34:38.985529Z	   19 Query	SHOW DATABASES
+2017-04-03T13:34:39.071705Z	   20 Query	SHOW SESSION VARIABLES LIKE 'version_compile_os'
+2017-04-03T13:34:39.078245Z	   20 Query	SHOW SESSION VARIABLES LIKE 'offline_mode'
+2017-04-03T13:34:39.090220Z	   19 Query	SHOW GLOBAL VARIABLES
+2017-04-03T13:34:39.189355Z	   19 Query	SHOW ENGINES
+2017-04-03T13:34:39.281385Z	   19 Query	show charset
+2017-04-03T13:34:39.356236Z	   19 Query	show collation
+2017-04-03T13:34:39.533921Z	   20 Query	SHOW SESSION VARIABLES LIKE 'wait_timeout'
+2017-04-03T13:34:39.538547Z	   20 Query	SHOW SESSION VARIABLES LIKE 'interactive_timeout'
+2017-04-03T13:36:02.539884Z	   10 Query	update user
+set password=password('dolphin')
+where user='dbadmin' and 
+host='localhost'
+2017-04-03T13:37:20.970603Z	   10 Query	update user
+set authentication_string=password('dolphin')
+where user='dbadmin' and 
+host='localhost'
+2017-04-03T13:37:30.187000Z	   10 Query	flush privileges
+2017-04-03T13:54:08.961603Z	   10 Query	SET PASSWORD FOR `dbadmin`@`localhost`=<secret>
+2017-04-03T13:55:06.521441Z	   10 Query	ALTER USER 'dbadmin'@'localhost' IDENTIFIED WITH 'mysql_native_password' AS '<secret>'
+2017-04-03T14:00:33.265312Z	   10 Query	show grants for super@localhost
+2017-04-03T14:00:59.786772Z	   10 Query	CREATE USER 'super'@'localhost' IDENTIFIED WITH 'mysql_native_password' AS '<secret>'
+2017-04-03T14:01:13.195585Z	   10 Query	show grants for super@localhost
+2017-04-03T14:01:43.489502Z	   10 Query	grant all on *.* to 'super'@'localhost' with grant option
+2017-04-03T14:02:04.222823Z	   10 Query	show grants for super@localhost
+2017-04-03T14:02:27.169675Z	   10 Query	CREATE USER 'auditor'@'localhost' IDENTIFIED WITH 'mysql_native_password' AS '<secret>'
+2017-04-03T14:04:21.484326Z	   10 Query	grant all on classicmodels.* to auditor@localhost
+2017-04-03T14:04:47.154150Z	   10 Query	CREATE USER 'rfc'@'%' IDENTIFIED WITH 'mysql_native_password' AS '<secret>'
+2017-04-03T14:05:13.256985Z	   10 Query	grant select,update,delete on classicmodels.* to rfc
+2017-04-03T14:06:07.924615Z	   10 Query	create table city(
+id int primary key auto_increment,
+name varchar(255)
+)
+2017-04-03T14:06:33.531576Z	   10 Quit	
+2017-04-03T14:07:08.328497Z	   21 Connect	classicmodels@localhost on  using TCP/IP
+2017-04-03T14:07:08.328566Z	   21 Connect	Access denied for user 'classicmodels'@'localhost' (using password: YES)
+2017-04-03T14:07:31.397420Z	   22 Connect	classicmodels@localhost on  using TCP/IP
+2017-04-03T14:07:31.397484Z	   22 Connect	Access denied for user 'classicmodels'@'localhost' (using password: YES)
+2017-04-03T14:07:52.817299Z	   23 Connect	classicmodels@localhost on  using TCP/IP
+2017-04-03T14:07:52.817367Z	   23 Connect	Access denied for user 'classicmodels'@'localhost' (using password: YES)
+2017-04-03T14:08:09.949528Z	   24 Connect	rfc@localhost on  using TCP/IP
+2017-04-03T14:08:09.952525Z	   24 Query	select @@version_comment limit 1
+2017-04-03T14:08:40.267098Z	   24 Query	create table city(
+id int primary key auto_increment,
+name varchar(255)
+)
+2017-04-03T14:08:48.255294Z	   24 Query	SELECT DATABASE()
+2017-04-03T14:08:48.255621Z	   24 Init DB	Access denied for user 'rfc'@'%' to database 'mysql'
+2017-04-03T14:08:57.946968Z	   24 Query	SELECT DATABASE()
+2017-04-03T14:08:57.947255Z	   24 Init DB	Access denied for user 'rfc'@'%' to database 'mysql'
+2017-04-03T14:09:03.685250Z	   24 Query	SELECT DATABASE()
+2017-04-03T14:09:03.685587Z	   24 Init DB	Access denied for user 'rfc'@'%' to database 'mysql'
+2017-04-03T14:09:12.199172Z	   24 Query	show databases
+2017-04-03T14:09:24.588438Z	   24 Query	SELECT DATABASE()
+2017-04-03T14:09:24.588717Z	   24 Init DB	information_schema
+2017-04-03T14:09:53.427609Z	   24 Query	create table city(
+id int primary key auto_increment,
+name varchar(255)
+)
+2017-04-03T14:10:06.487903Z	   24 Quit	
+2017-04-03T14:11:25.904186Z	   25 Connect	root@localhost on  using TCP/IP
+2017-04-03T14:11:25.907602Z	   25 Query	select @@version_comment limit 1
+2017-04-03T14:11:31.588339Z	   25 Query	SELECT DATABASE()
+2017-04-03T14:11:31.589279Z	   25 Init DB	mysql
+2017-04-03T14:11:37.884738Z	   25 Query	show grants for rfc
+2017-04-03T14:13:24.446015Z	   25 Query	create database crm
+2017-04-03T14:13:28.275549Z	   25 Query	SELECT DATABASE()
+2017-04-03T14:13:28.276025Z	   25 Init DB	crm
+2017-04-03T14:17:18.756301Z	   25 Query	create table customer(
+id int primary key auto_increment,
+first_name varchar(255) not null,
+last_name varchar(255) not null,
+phone varchar(15) not null,
+email varchar(255)
+)
+2017-04-03T14:19:34.047125Z	   25 Query	insert into customer(first_name,last_name,phone,email)
+values('John','Doe','(408)-987-7654','john.doe@mysqltutorial.org'),
+('Lily','Bush','(408)-987-7985','lily.bush@mysqltutorial.org')
+2017-04-03T14:19:47.781003Z	   25 Query	select* from customer
+2017-04-03T14:20:17.973333Z	   25 Query	create role crm_dev,crm_read,crm_write
+2017-04-03T14:21:02.940860Z	   25 Query	grant all on crm.* to crm_dev
+2017-04-03T14:21:33.609019Z	   25 Query	grant select on crm.* to crm_read
+2017-04-03T14:22:03.488793Z	   25 Query	grant insert,update,delete on crm.* to crm_write
+2017-04-03T14:22:51.787593Z	   25 Query	CREATE USER 'crm_dev1'@'localhost' IDENTIFIED WITH 'mysql_native_password' AS '<secret>'
+2017-04-03T14:23:13.927849Z	   25 Query	CREATE USER 'crm_read1'@'localhost' IDENTIFIED WITH 'mysql_native_password' AS '<secret>'
+2017-04-03T14:23:32.190928Z	   25 Query	CREATE USER 'crm_write1'@'localhost' IDENTIFIED WITH 'mysql_native_password' AS '<secret>'
+2017-04-03T14:24:03.983262Z	   25 Query	CREATE USER 'crm_write2'@'localhost' IDENTIFIED WITH 'mysql_native_password' AS '<secret>'
+2017-04-03T14:24:23.563773Z	   25 Query	grant crm_dev to crm_dev1@localhost
+2017-04-03T14:25:21.029144Z	   25 Query	grant crm_dev to crm_dev1@localhost
+2017-04-03T14:26:28.200034Z	   25 Query	grant crm_read to crm_read1@localhost
+2017-04-03T14:27:12.421677Z	   25 Query	grant crm_read,crm_write to crm_write1@localhost,crm_write2@localhost
+2017-04-03T14:27:28.515084Z	   25 Query	show grants for crm_dev1@localhost
+2017-04-03T14:28:13.313374Z	   25 Query	show grants for crm_write1@localhost using crm_write
+2017-04-03T14:29:26.543818Z	   25 Quit	
+2017-04-03T14:30:07.663267Z	   26 Connect	crm_read1@localhost on  using TCP/IP
+2017-04-03T14:30:07.663332Z	   26 Connect	Access denied for user 'crm_read1'@'localhost' (using password: YES)
+2017-04-03T14:30:41.496692Z	   27 Connect	crm_read1@localhost on  using TCP/IP
+2017-04-03T14:30:41.500103Z	   27 Query	select @@version_comment limit 1
+2017-04-03T14:30:58.875207Z	   27 Query	SELECT DATABASE()
+2017-04-03T14:30:58.875538Z	   27 Init DB	Access denied for user 'crm_read1'@'localhost' to database 'crm'
+2017-04-03T14:31:36.272430Z	   27 Query	select current_role()
+2017-04-03T14:32:04.414276Z	   27 Query	set default role all to crm_read1@localhost
+2017-04-03T14:32:41.575630Z	   27 Quit	
+2017-04-03T14:33:05.034298Z	   28 Connect	crm_read1@localhost on  using TCP/IP
+2017-04-03T14:33:05.037240Z	   28 Query	select @@version_comment limit 1
+2017-04-03T14:33:17.583071Z	   28 Query	select current_role()
+2017-04-03T14:33:31.953793Z	   28 Query	SELECT DATABASE()
+2017-04-03T14:33:31.954291Z	   28 Init DB	crm
+2017-04-03T14:33:46.765654Z	   28 Query	select count(*) from customer
