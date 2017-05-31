@@ -1,0 +1,68 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Draft contract</title>
+		<link href="css/style.css" rel="stylesheet" media="screen"
+			type="text/css" />
+	</head>
+
+	<body>
+		<div class="mtitle">
+			Draft Contract
+		</div>
+		<br />
+		<div style="font-size:18px;color:green;width:700px;text-align:center;">
+			Draft successed!			
+		</div>
+
+		<form>
+			<table class="update" style="width:700px;">
+				<tr height="28">
+					<td width="140px">Contract name:</td>
+					<td><input type="text" id="name" name="name" value="" /><font color="red">&nbsp;&nbsp;*</font>
+					</td>
+				</tr>
+
+				<tr height="28">
+					<td>Customer:</td>
+					<td><input type="text" name="customer" value="" />
+					</td>
+				</tr>
+				<tr>
+					<td>Begin time:</td>	
+					<td><input type="text" id="beginTime" name="beginTime"/><font color="red">&nbsp;&nbsp;*Correct format:yyyy-mm-dd</font>
+					</td>
+				</tr>
+				<tr>
+					<td>End time:</td>	
+					<td><input type="text" id="endTime" name="endTime"/><font color="red">&nbsp;&nbsp;*Correct format:yyyy-mm-dd</font>
+					</td>
+				</tr>
+				<tr>
+					<td>Content:</td>	
+					<td><font color="red">&nbsp;&nbsp;*</font>
+					</td>
+				</tr>
+
+				<tr>
+					<td colspan="2">
+						<textarea rows="40" cols="100" name="content" style="width:680px;height:400px;">
+						
+						</textarea>
+					</td>
+				</tr>
+				<tr height="28">
+					<td>Attachment:</td>
+					<td><input type="file" /></td>
+				</tr>
+				<tr height="28">
+					<td align="center" colspan="2">
+						<input type="submit" value="Submit" class="button">
+						 &nbsp; &nbsp; &nbsp;
+						<input type="reset" value="Reset" class="button">
+					</td>
+				</tr>
+			</table>
+		</form>
+	</body>
+</html>
