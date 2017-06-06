@@ -24,7 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				document.write(mydate.getYear()+"-"+month +"-"+mydate.getDate()+"     "+mydate.getHours()+":"+mydate.getMinutes());		
 			</SCRIPT>
 			</p>
-			<a href="toLogin">Login</a>|<a href="register">Register</a>
+			<a href="toLogin">Login</a>|<a href="toRegister">Register</a>
 		</div>
 	</body>
 </html>
