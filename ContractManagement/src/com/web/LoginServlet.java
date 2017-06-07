@@ -37,7 +37,7 @@ public class LoginServlet extends HttpServlet{
 			// Save userId and user name into session
 			session.setAttribute("userId", userId);
 			session.setAttribute("userName", name);
-			
+			request.getRequestDispatcher("/MainFrame.jsp").forward(request,response);
 			
 		} else {// Login failed
 			// Set prompt message
@@ -55,4 +55,4 @@ public class LoginServlet extends HttpServlet{
 		// Call doPost() to process request
 		this.doPost(request, response);
 	}
-}
+} 
