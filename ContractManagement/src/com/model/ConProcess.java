@@ -2,36 +2,38 @@ package com.ruanko.model;
 
 import java.util.Date;
 
+/**
+ * Contract operation process entity classes
+ */
 public class ConProcess {
 
-	//声明变量
-	private int id;
-	private int con_id;
-	private int user_id;
-	private int type;
-	private int state;
-	private int del;
+	private int id;			    //ID
+	private int conId;			// Contract id
+	private int userId;			// User id
+	private int type;			// Operation type(1-countersign ,2-approve,3-sign)
+	private int state;			// Operation status(0-unfinished,1-completed,2-rejected)
+	private String content;		// Operation content
+	private Date time;			// Operation time 
+	private int del;			// Delete status(0-Not deleted, 1-Deleted)
 	
-	private String content;
-	
-	private Date time;
-	
-	//无参构造函数
+	/**
+	 * No-arg constructor assigns initial values to object attributes
+	 */
 	public ConProcess(){
-		this.id=0;
-		this.con_id=0;
-		this.user_id=0;
-		this.type=0;
-		this.state=0;
-		this.del=0;
-		
-		this.content="";
-		
-		this.time=new Date();
+		this.id = 0;
+		this.conId = 0;
+		this.userId = 0;
+		this.type = 0;
+		this.state = 0;
+		this.content = "";
+		this.time = new Date();
+		this.del = 0;
 	}
 
-	
-	//get set函数
+	/*
+	 *  Provide setter and getter methods for attributes
+	 *  setter is used for setting the attribute's value, getter is used for getting the attribute's value
+	 */
 	public int getId() {
 		return id;
 	}
@@ -40,20 +42,20 @@ public class ConProcess {
 		this.id = id;
 	}
 
-	public int getCon_id() {
-		return con_id;
+	public int getConId() {
+		return conId;
 	}
 
-	public void setCon_id(int con_id) {
-		this.con_id = con_id;
+	public void setConId(int conId) {
+		this.conId = conId;
 	}
 
-	public int getUser_id() {
-		return user_id;
+	public int getUserId() {
+		return userId;
 	}
 
-	public void setUser_id(int user_id) {
-		this.user_id = user_id;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 
 	public int getType() {
@@ -72,14 +74,6 @@ public class ConProcess {
 		this.state = state;
 	}
 
-	public int getDel() {
-		return del;
-	}
-
-	public void setDel(int del) {
-		this.del = del;
-	}
-
 	public String getContent() {
 		return content;
 	}
@@ -87,7 +81,7 @@ public class ConProcess {
 	public void setContent(String content) {
 		this.content = content;
 	}
-
+	
 	public Date getTime() {
 		return time;
 	}
@@ -95,6 +89,12 @@ public class ConProcess {
 	public void setTime(Date time) {
 		this.time = time;
 	}
-	
-	
+
+	public int getDel() {
+		return del;
+	}
+
+	public void setDel(int del) {
+		this.del = del;
+	}
 }
