@@ -13,6 +13,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			type="text/css" />
 	</head>
 	<body>
+	<jsp:include page="LogHeader.jsp"></jsp:include>
 		<div class="content">
 			<p>
 			Welcome to Contract Management System!
@@ -24,7 +25,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				document.write(mydate.getYear()+"-"+month +"-"+mydate.getDate()+"     "+mydate.getHours()+":"+mydate.getMinutes());		
 			</SCRIPT>
 			</p>
-			<a href="toLogin">Login</a>|<a href="toRegister">Register</a>
 		</div>
 	</body>
 </html>
