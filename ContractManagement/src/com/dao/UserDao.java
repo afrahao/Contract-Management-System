@@ -1,30 +1,38 @@
-package com.dao;
+package com.ruanko.dao;
 
-import java.util.List;
+import com.ruanko.model.User;
+import com.ruanko.utils.AppException;
 
-import com.model.User;
-
+/**
+ * User Data Access Layer Interface
+ */
 public interface UserDao {
-	public boolean isExist(String name);
 	
-	/*
-	  Save user's information
+	/**
+	 * Verify whether exists users that has the same name 
+	 * 
+	 * @param name User name
+	 * @return Return true if there are users have same name,otherwise return false 
+	 * @throws AppException
 	 */
-	public boolean add(User user);
+	public boolean isExist(String name) throws AppException;
 	
-	/*
-	  Query  UserId according to user name and password
+	/**
+	 * Save user information
+	 * 
+	 * @param user user object
+	 * @return Return true if saved successfully,otherwise return false
+	 * @throws AppException
 	 */
-	public int login(String name,String password);
+	public boolean add(User user) throws AppException;
 	
-	/*
-	  Query user's information according to id
+	/**
+	 * Query user id according to the user name and password
+	 * @param name 
+	 * @param password 
+	 * @return User id
+	 * @throws AppException 
 	 */
-	public User getById(int id);
-	
-	/*
-	  Query user id set
-	 */
-	public List<Integer> getIds();
+	public int login(String name,String password) throws AppException;
 	
 }
