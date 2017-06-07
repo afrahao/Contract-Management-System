@@ -1,42 +1,37 @@
 package com.ruanko.model;
 
+/**
+ * Role entity class
+ */
 public class Role {
-
-	//参数定义
-	private int id;
-	private int del;
 	
-	private String name;
-	private String description;
-	private String function_ids;
+	private int id;			    //ID
+	private String name;		//Role name
+	private String description;	//Description
+	private String funcIds;		//Function number combination(Split multiple function number with ",")
+	private int del;			//Delete status(0-Not deleted, 1-Deleted)
 	
-	//无参构造函数
-	public Role(){
-		this.id=0;
-		this.del=0;
-		
-		this.name="";
-		this.description="";
-		this.function_ids="";
+	/**
+	 * No-arg constructor assigns initial values to object attributes
+	 */
+	public Role() {
+		this.id = 0;
+		this.name = "";
+		this.description = "";
+		this.funcIds = "";
+		this.del = 0;
 	}
 
-	
-	
-	//get set方法
+	/*
+	 *  Provide setter and getter methods for attributes
+	 *  setter is used for setting the attribute's value, getter is used for getting the attribute's value
+	 */
 	public int getId() {
 		return id;
 	}
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public int getDel() {
-		return del;
-	}
-
-	public void setDel(int del) {
-		this.del = del;
 	}
 
 	public String getName() {
@@ -55,11 +50,20 @@ public class Role {
 		this.description = description;
 	}
 
-	public String getFunction_ids() {
-		return function_ids;
+	public String getFuncIds() {
+		return funcIds;
 	}
 
-	public void setFunction_ids(String function_ids) {
-		this.function_ids = function_ids;
+	public void setFuncIds(String funcIds) {
+		this.funcIds = funcIds;
 	}
+
+	public int getDel() {
+		return del;
+	}
+
+	public void setDel(int del) {
+		this.del = del;
+	}
+	
 }
