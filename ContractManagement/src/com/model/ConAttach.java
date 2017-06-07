@@ -1,65 +1,90 @@
-package com.ruanko.utils;
+package com.ruanko.model;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.util.Date;
 
+/**
+ * Attachment entity class
+ */
+public class ConAttach {
 
-
-
-public class DBUtil {
-
-	private static String url="jdbc:mysql://127.0.0.1:3306/contractdb?useUnicode=true&amp;"+"characterEncoding=utf8";//数据库连接字符串
-	private static String user="root";//数据库帐号
-	private static String password="03281234";//数据库密码
+	private int id;			    //ID
+	private int conId;			// Contract id
+	private String fileName;	// Attachment name
+	private String path;		// Attachment path
+	private String type;		// Attachment type
+	private Date uploadDate;	// Upload date
+	private int del;			// Delete status(0-Not deleted, 1-Deleted)
 	
-	public static Connection getConnection(){
-		Connection conn=null;
-		
-		try{
-			conn=DriverManager.getConnection(url,user,password);
-		}catch(SQLException e){
-			e.printStackTrace();
-		}
-		return conn;
+	/**
+	 * No-arg constructor assigns initial values to object attributes
+	 */
+	public ConAttach(){
+		this.id = 0;
+		this.conId = 0;
+		this.fileName = "";
+		this.path = "";
+		this.type = "";
+		this.uploadDate = new Date();
+		this.del = 0;
 	}
-	public static void closeConnection(Connection conn){
-		try{
-			if((conn!=null)&&(!conn.isClosed())){
-				conn.close();
-				conn=null;
-			}
-		}catch(SQLException e){
-			e.printStackTrace();
-		}
+
+	/*
+	 * Provide setter and getter methods for attributes
+	 * setter is used for setting the attribute's value, getter is used for getting the attribute's value
+	 */
+	public int getId() {
+		return id;
 	}
-	public static void closeStateMent(Statement st){
-		try{
-			if((st!=null)&&(!st.isClosed())){
-				st.close();
-				st=null;
-			}
-		}catch(SQLException e){
-			e.printStackTrace();
-		}
+
+	public void setId(int id) {
+		this.id = id;
 	}
-	public static void closeResultSet(ResultSet rs){
-		try{
-			if((rs!=null)&&(!rs.isClosed())){
-				rs.close();
-				rs=null;
-			}
-		}catch(SQLException e){
-			e.printStackTrace();
-		}
+
+	public int getConId() {
+		return conId;
 	}
-	public static void main(String []args){
-		Connection conn=null;
-		conn=getConnection();
-		if(conn!=null){
-			System.out.println("aa");
-		}
+
+	public void setConId(int conId) {
+		this.conId = conId;
+	}
+
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
+	public String getPath() {
+		return path;
+	}
+
+	public void setPath(String path) {
+		this.path = path;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+	
+	public Date getUploadDate() {
+		return uploadDate;
+	}
+
+	public void setUploadDate(Date uploadDate) {
+		this.uploadDate = uploadDate;
+	}
+
+	public int getDel() {
+		return del;
+	}
+
+	public void setDel(int del) {
+		this.del = del;
 	}
 }
