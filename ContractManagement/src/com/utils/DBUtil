@@ -1,4 +1,4 @@
-package com.utils;
+package com.ruanko.utils;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -7,77 +7,59 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 
+
+
 public class DBUtil {
 
-	// url is database connection string,the format of url is:Database protocol :// <database server address> [<: port>]/<Database name>?Character Settings
-	// 127.0.0.1 represent that the database server is in local computer, usually configured the localhost represent 127.0.0.1  in hosts file
-	private static String url = "jdbc:mysql://127.0.0.1:3306/contractdb?useUnicode=true&amp;" +
-			"characterEncoding=utf8"; // Database connection string,the character encoding is utf8
-	private static String user = "root"; // Database account
-	private static String password = "15301043"; // Database password
+	private static String url="jdbc:mysql://127.0.0.1:3306/contractdb?useUnicode=true&amp;"+"characterEncoding=utf8";//数据库连接字符串
+	private static String user="root";//数据库帐号
+	private static String password="03281234";//数据库密码
 	
-	// Static code block,realized to load driver,executed once only when the class is loaded
-	static {
-		try {
-			// Load driver
-			Class.forName("com.mysql.jdbc.Driver");
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-	}
-
-	
-	public static Connection getConnection() {
-		Connection conn = null;
-		try {
-			// Create a database connection
-			conn = DriverManager.getConnection(url, user, password);
-			// If successful get the database connection, print a success message
-			System.out.println("connect success!");
-		} catch (SQLException e) {
+	public static Connection getConnection(){
+		Connection conn=null;
+		
+		try{
+			conn=DriverManager.getConnection(url,user,password);
+		}catch(SQLException e){
 			e.printStackTrace();
 		}
 		return conn;
 	}
-
-	
-	public static void closeConnection(Connection conn) {
-		try {
-			if ((conn != null) && (!conn.isClosed())) {
+	public static void closeConnection(Connection conn){
+		try{
+			if((conn!=null)&&(!conn.isClosed())){
 				conn.close();
-				conn = null;
+				conn=null;
 			}
-		} catch (SQLException e) {
+		}catch(SQLException e){
 			e.printStackTrace();
 		}
 	}
-
-	
-	public static void closeStatement(Statement st) {
-		try {
-			if ((st != null) && (!st.isClosed())) {
+	public static void closeStateMent(Statement st){
+		try{
+			if((st!=null)&&(!st.isClosed())){
 				st.close();
-				st = null;
+				st=null;
 			}
-		} catch (SQLException e) {
+		}catch(SQLException e){
 			e.printStackTrace();
 		}
 	}
-
-	
-	public static void closeResultSet(ResultSet rs) {
-		try {
-			if ((rs != null) && (!rs.isClosed())) {
+	public static void closeResultSet(ResultSet rs){
+		try{
+			if((rs!=null)&&(!rs.isClosed())){
 				rs.close();
-				rs = null;
+				rs=null;
 			}
-		} catch (SQLException e) {
+		}catch(SQLException e){
 			e.printStackTrace();
 		}
 	}
-
-	
-	public static void main(String[] args) {
-		getConnection();
+	public static void main(String []args){
+		Connection conn=null;
+		conn=getConnection();
+		if(conn!=null){
+			System.out.println("aa");
+		}
 	}
 }
