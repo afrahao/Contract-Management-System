@@ -1,27 +1,31 @@
 package com.ruanko.model;
 
+/**
+ * Permissions entity class
+ */
 public class Right {
-
-	//参数定义
-	private int id;
-	private int user_id;
-	private int role_id;
-	private int del;
 	
-	private String description;
+	private int id;			    //ID
+	private int userId;			//User id
+	private int roleId;			//Role id
+	private String description; //Description
+	private int del;			//Delete status(0-Not deleted, 1-Deleted)
 	
-	//无参构造函数
-	public Right(){
-		this.id=0;
-		this.user_id=0;
-		this.role_id=0;
-		this.del=0;
-		
-		this.description="";
+	/**
+	 * No-arg constructor assigns initial values to object attributes
+	 */
+	public Right() {
+		this.id = 0;
+		this.userId = 0;
+		this.roleId = 0;
+		this.description = "";
+		this.del = 0;
 	}
 
-	
-	//get set 方法
+	/*
+	 * Provide setter and getter methods for attributes
+	 * setter is used for setting the attribute's value, getter is used for getting the attribute's value
+	 */
 	public int getId() {
 		return id;
 	}
@@ -30,20 +34,28 @@ public class Right {
 		this.id = id;
 	}
 
-	public int getUser_id() {
-		return user_id;
+	public int getUserId() {
+		return userId;
 	}
 
-	public void setUser_id(int user_id) {
-		this.user_id = user_id;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 
-	public int getRole_id() {
-		return role_id;
+	public int getRoleId() {
+		return roleId;
 	}
 
-	public void setRole_id(int role_id) {
-		this.role_id = role_id;
+	public void setRoleId(int roleId) {
+		this.roleId = roleId;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public int getDel() {
@@ -54,12 +66,4 @@ public class Right {
 		this.del = del;
 	}
 
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-	
 }
