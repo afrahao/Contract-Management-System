@@ -2,32 +2,32 @@ package com.ruanko.model;
 
 import java.util.Date;
 
+/**
+ * Log entity class
+ */
 public class Log {
-
-	//参数定义
-	private int id;
-	private int user_id;
-	private int del;
 	
-	String content;
+	private int id;			    //ID
+	private int userId;			//Operator id
+	private String content;		//Log content
+	private Date time;			//Operation time
+	private int del;			//Delete status(0-Not deleted, 1-Deleted)
 	
-	private Date time;
-	
-	//无参构造函数
+	/**
+	 * No-arg constructor assigns initial values to object attributes
+	 */
 	public Log(){
-		this.id=0;
-		this.user_id=0;
-		this.del=0;
-		
-		this.content="";
-		
-		this.time=new Date();
+		this.id = 0;
+		this.userId = 0;
+		this.content = "";
+		this.time = new Date();
+		this.del = 0;
 	}
 
-	
-	
-	
-	//get set方法
+	/*
+	 * Provide setter and getter methods for attributes
+	 * setter is used for setting the attribute's value, getter is used for getting the attribute's value
+	 */
 	public int getId() {
 		return id;
 	}
@@ -36,20 +36,12 @@ public class Log {
 		this.id = id;
 	}
 
-	public int getUser_id() {
-		return user_id;
+	public int getUserId() {
+		return userId;
 	}
 
-	public void setUser_id(int user_id) {
-		this.user_id = user_id;
-	}
-
-	public int getDel() {
-		return del;
-	}
-
-	public void setDel(int del) {
-		this.del = del;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 
 	public String getContent() {
@@ -59,7 +51,7 @@ public class Log {
 	public void setContent(String content) {
 		this.content = content;
 	}
-
+	
 	public Date getTime() {
 		return time;
 	}
@@ -67,4 +59,13 @@ public class Log {
 	public void setTime(Date time) {
 		this.time = time;
 	}
+
+	public int getDel() {
+		return del;
+	}
+
+	public void setDel(int del) {
+		this.del = del;
+	}
+	
 }
