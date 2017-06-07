@@ -1,53 +1,47 @@
 package com.ruanko.model;
 
+/**
+ *  Customer entity classes
+ */
 public class Customer {
 
-	//参数定义
-	private int id;
-	private int del;
+	private int id;			    //ID
+	private String num;			//Customer number
+	private String name;		//Customer name
+	private String address;		//Customer address
+	private String tel;			//Customer phone
+	private String fax;			//Customer fax
+	private String code;		//Customer postcode
+	private String bank;		//Bank name
+	private String accout;		//Bank account
+	private int del;			//Delete status(0-Not deleted, 1-Deleted)
 	
-	private String num;
-	private String name;
-	private String address;
-	private String tel;
-	private String fax;
-	private String code;
-	private String bank;
-	private String account;
-	
-	//无参构造函数
+	/**
+	 * No-arg constructor assigns initial values to object attributes
+	 */
 	public Customer(){
-		this.id=0;
-		this.del=0;
-		
-		this.num="";
-		this.name="";
-		this.address="";
-		this.tel="";
-		this.fax="";
-		this.code="";
-		this.bank="";
-		this.account="";
-		
+		this.id = 0;
+		this.num = "";
+		this.name = "";
+		this.address = "";
+		this.tel = "";
+		this.fax = "";
+		this.code = "";
+		this.bank = "";
+		this.accout = "";
+		this.del = 0;
 	}
 
-	
-	
-	//get set方法
+	/*
+	 * Provide setter and getter methods for attributes
+	 * setter is used for setting the attribute's value, getter is used for getting the attribute's value
+	 */
 	public int getId() {
 		return id;
 	}
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public int getDel() {
-		return del;
-	}
-
-	public void setDel(int del) {
-		this.del = del;
 	}
 
 	public String getNum() {
@@ -106,12 +100,19 @@ public class Customer {
 		this.bank = bank;
 	}
 
-	public String getAccount() {
-		return account;
+	public String getAccout() {
+		return accout;
 	}
 
-	public void setAccount(String account) {
-		this.account = account;
+	public void setAccout(String accout) {
+		this.accout = accout;
 	}
-	
+
+	public int getDel() {
+		return del;
+	}
+
+	public void setDel(int del) {
+		this.del = del;
+	}
 }
