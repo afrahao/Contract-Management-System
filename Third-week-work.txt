@@ -1,0 +1,9 @@
+Lin:
+      Draft contract
+      assign contract
+      countersign contract
+      
+Li:
+      Finalize contract
+      review contract
+      sign contract
