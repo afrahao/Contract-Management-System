@@ -2,41 +2,38 @@ package com.ruanko.model;
 
 import java.util.Date;
 
-
-
+/**
+ * Contract entity classes
+ */
 public class Contract {
+	private int id; 			//ID
+	private int userId; 		// User id
+	private String customer; 	// Customer
+	private String num; 		// Contract number
+	private String name; 		// Contract name
+	private Date beginTime; 	// Begin time
+	private Date endTime; 		// End time
+	private String content; 	// Contract content
+	private int del; 			// Delete status(0-Not deleted, 1-Deleted)
 
-	//私有属性
-	private int id;//ID
-	private int userId;//
-	private String customer;//
-	private String num;//
-	private String name;//
-	private Date beginTime;
-	private Date endTime;
-	private String content;
-	private int del;
-	
-	//无参构造方法
-	public Contract(){
+	/**
+	 * No-arg constructor assigns initial values to object attributes
+	 */
+	public Contract() {
 		this.id = 0;
 		this.userId = 0;
+		this.customer = "";
+		this.num = "";
+		this.name = "";
+		this.beginTime = new Date();
+		this.endTime = new Date();
+		this.content = "";
 		this.del = 0;
-		
-		this.customer="";
-		this.num="";
-		this.name="";
-		this.content="";
-		
-		this.beginTime=new Date();
-		this.endTime=new Date();
-		
-		
 	}
 
-	
-	
-	//set,get方法
+	/*
+	 * Provide setter and getter methods for attributes,setter is used for setting the attribute's value, getter is used for getting the attribute's value
+	 */
 	public int getId() {
 		return id;
 	}
@@ -108,6 +105,4 @@ public class Contract {
 	public void setDel(int del) {
 		this.del = del;
 	}
-	
-	
 }
