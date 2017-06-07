@@ -1,44 +1,39 @@
 package com.ruanko.model;
 
+/**
+ * Function entity classes
+ */
 public class Function {
-
-	//参数定义
-	private int id;
-	private int del;
 	
-	private String num;
-	private String name;
-	private String URL;
-	private String description;
+	private int id;			    //ID
+	private String num;			//Function number
+	private String name;		//Function name
+	private String url;			//Access path
+	private String description;	//Description
+	private int del;			//Delete status(0-Not deleted, 1-Deleted)
 	
-	//无参构造函数
+	/**
+	 * No-arg constructor assigns initial values to object attributes
+	 */
 	public Function(){
-		this.id=0;
-		this.del=0;
-		
-		this.num="";
-		this.name="";
-		this.URL="";
-		this.description="";
+		this.id = 0;
+		this.num = "";
+		this.name = "";
+		this.url = "";
+		this.description = "";
+		this.del = 0;
 	}
 
-	
-	
-	//get set方法
+	/*
+	 * Provide setter and getter methods for attributes
+	 * setter is used for setting the attribute's value, getter is used for getting the attribute's value
+	 */
 	public int getId() {
 		return id;
 	}
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public int getDel() {
-		return del;
-	}
-
-	public void setDel(int del) {
-		this.del = del;
 	}
 
 	public String getNum() {
@@ -57,12 +52,12 @@ public class Function {
 		this.name = name;
 	}
 
-	public String getURL() {
-		return URL;
+	public String getUrl() {
+		return url;
 	}
 
-	public void setURL(String uRL) {
-		URL = uRL;
+	public void setUrl(String url) {
+		this.url = url;
 	}
 
 	public String getDescription() {
@@ -71,5 +66,13 @@ public class Function {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public int getDel() {
+		return del;
+	}
+
+	public void setDel(int del) {
+		this.del = del;
 	}
 }
