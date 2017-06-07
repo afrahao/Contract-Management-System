@@ -36,6 +36,7 @@
 	<body>
 		<!-- main start -->
 		<div class="main">
+			<a href="index">Comeback</a>
 			<form action="login" method="post">
 
 				<div class="register_main">
@@ -89,8 +90,9 @@
 							</td>
 						</tr>
 					</table>
+					
 				</div>
-
+					
 			</form>
 		</div>
 		<!-- main end -->
