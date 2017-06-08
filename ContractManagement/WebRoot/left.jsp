@@ -14,7 +14,7 @@
 					Draft
 				</dt>
 				<dd>
-					<a href="toLogin" target="main">Draft Contract</a>
+					<a href="toDraft" target="main">Draft Contract</a>
 				</dd>
 				<dd>
 					<a href="toLogin" target="main">Contract to be finalized</a>
