@@ -12,19 +12,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<link href="css/frame.css" rel="stylesheet" 
 			type="text/css" />
 	</head>
-	<body>
-		<div class="content">
-			<p>
-			Welcome to Contract Management System!
-			<br />			
-			Current time:
-			<SCRIPT language = JavaScript>
-				var mydate = new Date();
-				var month = mydate.getMonth()+1;
-				document.write(mydate.getYear()+"-"+month +"-"+mydate.getDate()+"     "+mydate.getHours()+":"+mydate.getMinutes());		
-			</SCRIPT>
-			</p>
-			<a href="toLogin">Login</a>|<a href="toRegister">Register</a>
-		</div>
-	</body>
+	
+	<frameset rows="100,*" frameborder="no" border="0">
+		<frame src="LogHeader.jsp"  scrolling="no"/>
+		<frame src="welcome.jsp"  scrolling="no"/>
+	</frameset>
+	
+	<noframes>
+		<body>
+			Your browser does not support frame structure!
+		</body>
+	</noframes>
+	
 </html>
