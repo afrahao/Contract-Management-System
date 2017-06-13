@@ -1,4 +1,4 @@
-package com.ruanko.web;
+package com.web;
 
 import java.io.IOException;
 
@@ -18,7 +18,7 @@ public class ToNewUserServlet extends HttpServlet{
 	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// Set request's character encoding
+		// SSet request's character encoding
 		request.setCharacterEncoding("UTF-8");
 		
 		// Declare session
@@ -32,7 +32,7 @@ public class ToNewUserServlet extends HttpServlet{
 			response.sendRedirect("toLogin");
 		}else {
 			// Forward to the user page
-			request.getRequestDispatcher("/newUser.jsp").forward(request, response);
+			request.getRequestDispatcher("/NewUser.jsp").forward(request, response);
 		}
 	}
 
