@@ -1,4 +1,4 @@
-package com.ruanko.model;
+package com.model;
 
 /**
  * Function entity classes
