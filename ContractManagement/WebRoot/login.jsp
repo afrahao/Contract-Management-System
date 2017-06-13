@@ -86,13 +86,13 @@
 						</tr>
 						<tr>
 							<td colspan="3">
+							
 								<input type="submit" value="Login" class="button" onclick="return check()"/>
 							</td>
 						</tr>
 					</table>
-					
+					<a href="toChangePassword">Change Password</a>
 				</div>
-					
 			</form>
 		</div>
 		<!-- main end -->
