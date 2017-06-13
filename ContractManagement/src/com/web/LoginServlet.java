@@ -1,4 +1,4 @@
-package com.ruanko.web;
+package com.web;
 
 import java.io.IOException;
 
@@ -8,9 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.ruanko.model.Role;
-import com.ruanko.service.UserService;
-import com.ruanko.utils.AppException;
+import com.model.Role;
+import com.service.UserService;
+import com.utils.AppException;
 
 /**
  * Login Servlet
@@ -59,10 +59,10 @@ public class LoginServlet extends HttpServlet {
 					response.sendRedirect("toNewUser");
 				} else if (role.getName().equals("admin")) {
 					//Redirect to administrator page
-					response.sendRedirect("toAdmin");
+					response.sendRedirect("adminFrame");
 				} else if (role.getName().equals("operator")) {
 					//Redirect to operator page 
-					response.sendRedirect("toOperator");
+					response.sendRedirect("operatorFrame");
 				}
 			} else {// Login failed
 				// Set prompt message
