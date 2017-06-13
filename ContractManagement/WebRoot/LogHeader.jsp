@@ -4,7 +4,7 @@
 	<div class="toplinks">
 		<span> 
  	       [<a href="toLogin" target="_top">Login</a>]
-		   &nbsp;|&nbsp; [<a href="toRegister">Register</a>]
+		   &nbsp;|&nbsp; [<a href="toRegister" target="_top">Register</a>]
 		</span>
 	</div>
 
