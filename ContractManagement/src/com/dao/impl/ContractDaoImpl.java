@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.dao.ContractDao;
+import com.model.ConState;
 import com.model.Contract;
 import com.utils.AppException;
 import com.utils.DBUtil;
@@ -224,4 +225,124 @@ public class ContractDaoImpl implements ContractDao {
 		return flag;
 	}
 	
+	public List<Contract> getAll() throws AppException {
+		// Initialiaze roleList
+		List<Contract> contractList = new ArrayList<Contract>();
+		
+		//Declare Connection object,PreparedStatement object and ResultSet object
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		ResultSet rs = null;
+		
+		try {
+			// Create database connection
+			conn = DBUtil.getConnection();
+			// Declare operation statement:query all role object set,"?" is a placeholder
+			String sql = "select id,user_id,customer,num,name,beginTime,endTime,content,del from t_contract ";
+			
+			psmt = conn.prepareStatement(sql);
+			
+			rs = psmt.executeQuery();// Return result set
+			// Loop to get information in result set,and save in ids
+			while (rs.next()) {
+				Contract contract = new Contract(); // Instantiate role object
+				// Set value to role
+				contract.setId(rs.getInt("id"));
+				contract.setUserId(rs.getInt("user_id"));
+				contract.setContent(rs.getString("content"));
+				contract.setCustomer(rs.getString("customer"));
+				contract.setBeginTime(rs.getDate("beginTime"));
+				contract.setEndTime(rs.getDate("endTime"));
+				contract.setNum(rs.getString("num"));
+				contract.setName(rs.getString("name"));
+				contract.setDel(rs.getInt("del"));
+				
+				
+				contractList.add(contract);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			// Close the database operation object, release resources
+			DBUtil.closeResultSet(rs);
+			DBUtil.closeStatement(psmt);
+			DBUtil.closeConnection(conn);
+		}
+		return contractList;
+	}
+
+	public List<Contract> getFinalized() throws AppException {
+		// Initialiaze roleList
+		List<Contract> contractList = new ArrayList<Contract>();
+		
+		//Declare Connection object,PreparedStatement object and ResultSet object
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		ResultSet rs = null;
+		
+		try {
+			// Create database connection
+			conn = DBUtil.getConnection();
+			// Declare operation statement:query all role object set,"?" is a placeholder
+			String sql = "select t_contract.id,user_id,customer,num,name,beginTime,endTime,content,t_contract.del from t_contract,t_contract_state where t_contract.id=t_contract_state.con_id and t_contract_state.type=5 ";
+			
+			psmt = conn.prepareStatement(sql);
+			
+			rs = psmt.executeQuery();// Return result set
+			// Loop to get information in result set,and save in ids
+			while (rs.next()) {
+				Contract contract = new Contract(); // Instantiate role object
+				// Set value to role
+				contract.setId(rs.getInt("id"));
+				contract.setUserId(rs.getInt("user_id"));
+				contract.setContent(rs.getString("content"));
+				contract.setCustomer(rs.getString("customer"));
+				contract.setBeginTime(rs.getDate("beginTime"));
+				contract.setEndTime(rs.getDate("endTime"));
+				contract.setNum(rs.getString("num"));
+				contract.setName(rs.getString("name"));
+				contract.setDel(rs.getInt("del"));
+				
+				
+				contractList.add(contract);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			// Close the database operation object, release resources
+			DBUtil.closeResultSet(rs);
+			DBUtil.closeStatement(psmt);
+			DBUtil.closeConnection(conn);
+		}
+		return contractList;
+	}
+	public void deleteContract(int id){
+		//Declare Connection object,PreparedStatement object and ResultSet object
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		int rs;
+		try {
+			// Create database connection
+			conn = DBUtil.getConnection();
+			// Declare operation statement,query role's information based on role id, "?" is a placeholder
+			String sql = "delete from t_contract where id =? " ;
+			// Pre-compiled sql
+			psmt =(PreparedStatement) conn.prepareStatement(sql);
+			// Set values for the placeholder  '?'
+			psmt.setInt(1, id);
+			
+			rs = psmt.executeUpdate();
+			
+			// Save user's information by using Pole entity object when queried the results set 
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+		} finally {
+			// Close the database operation object, release resources
+			DBUtil.closeStatement(psmt);
+			DBUtil.closeConnection(conn);
+		}
+		
+	}
 }

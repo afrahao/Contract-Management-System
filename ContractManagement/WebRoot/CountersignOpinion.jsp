@@ -11,7 +11,11 @@
 			function check(){
 				var content = document.getElementById('content');
 				if(content.value == ""){
+<<<<<<< HEAD
 		 			alert("Countersign opinion can not be empty!");
+=======
+					alert("Countersign opinion can not be empty!");
+>>>>>>> origin/LiWenjie
 					content.focus();
 					return false;
 				}

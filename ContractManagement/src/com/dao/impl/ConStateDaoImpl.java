@@ -9,6 +9,7 @@ import java.util.List;
 
 import com.dao.ConStateDao;
 import com.model.ConState;
+import com.model.Role;
 import com.utils.AppException;
 import com.utils.DBUtil;
 
@@ -166,7 +167,7 @@ public class ConStateDaoImpl implements ConStateDao {
 	 * 
 	 * @param con_id Countract id
 	 * @param type Operation type
-	 * @return boolean Exist return true，otherwise return false
+	 * @return boolean Exist return true锛宱therwise return false
 	 * @throws AppException
 	 */
 	public boolean isExist(int con_id, int type) throws AppException {
@@ -209,5 +210,45 @@ public class ConStateDaoImpl implements ConStateDao {
 		}
 		return flag;
 	}
+	public List<ConState> getAll() throws AppException {
+		// Initialiaze roleList
+		List<ConState> stateList = new ArrayList<ConState>();
+		
+		//Declare Connection object,PreparedStatement object and ResultSet object
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		ResultSet rs = null;
+		
+		try {
+			// Create database connection
+			conn = DBUtil.getConnection();
+			// Declare operation statement:query all role object set,"?" is a placeholder
+			String sql = "select con_id,time,del,max(type) from t_contract_process where state = 1 group by con_id";
+			
+			psmt = conn.prepareStatement(sql);
+			
+			rs = psmt.executeQuery();// Return result set
+			// Loop to get information in result set,and save in ids
+			while (rs.next()) {
+				ConState constate = new ConState(); // Instantiate role object
+				// Set value to role
+				constate.setConId(rs.getInt("con_id"));
+				constate.setTime(rs.getDate("time"));
+				constate.setType(rs.getInt("max(type)"));
+				constate.setDel(rs.getInt("del"));
+				
+				stateList.add(constate);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			// Close the database operation object, release resources
+			DBUtil.closeResultSet(rs);
+			DBUtil.closeStatement(psmt);
+			DBUtil.closeConnection(conn);
+		}
+		return stateList;
+	}
+
 
 }

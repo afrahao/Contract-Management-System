@@ -1,9 +1,14 @@
 package com.service;
 
+<<<<<<< HEAD
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+=======
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+>>>>>>> origin/LiWenjie
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
@@ -151,6 +156,7 @@ public class ContractService {
 		return flag;
 	}
 	
+<<<<<<< HEAD
 	public Contract FindLatest(List<ConBusiModel> list) throws AppException, ParseException {
 		Contract latest = null;
 		ConBusiModel conLatest;
@@ -211,6 +217,9 @@ public class ContractService {
 		long beyween_days=(time2-time1)/(1000*3600*24);
 		return Integer.parseInt(String.valueOf(beyween_days));
 	}
+=======
+	
+>>>>>>> origin/LiWenjie
 	public List<ConBusiModel> getDhqhtList(int userId) throws AppException {
 		// Initialize  conList
 		List<ConBusiModel> conList = new ArrayList<ConBusiModel>();
@@ -509,6 +518,7 @@ public class ContractService {
 	
 	public List<ConBusiModel> getFinalizedContract(int userId) throws AppException {
 		// Initialize conList
+<<<<<<< HEAD
 				List<ConBusiModel> conList = new ArrayList<ConBusiModel>();
 				// Initialize conList for saving id set of contract to be approved
 				List<Integer> conIds = new ArrayList<Integer>();
@@ -565,6 +575,59 @@ public class ContractService {
 				}
 				// Return conList
 				return conList;
+=======
+		List<ConBusiModel> conList = new ArrayList<ConBusiModel>();
+		// Initialize conIds,for saving id set of contracts that to be finalized
+		List<Integer> conIds = new ArrayList<Integer>();
+						
+		try {
+			/*
+			 * Get drafted contract , exist "STATE_CSIGNED" state
+			 */
+			
+			/*
+			* 1.Get id set of draft contracts
+			*/
+			List<Integer> drafConIds = contractDao.getIdsByUserId(userId);
+							
+			/*
+			 * 2.Screen out different id set of contracts to be finalized from drafted contracts,and save to conIds
+			 * Contracts to be finalized:exist "STATE_CSIGNED" state,do not exist "STATE_FINALIZED" state at the same time
+			 */
+			for (int dConId : drafConIds) {
+			if (conStateDao.isExist(dConId, Constant.STATE_FINALIZED)) {
+					conIds.add(dConId);
+				}
+			}
+							
+			/* 
+			 * 3.Get contract's information that to be finalized,and save to  contract business entity object,and put entity class to conList 
+			 */
+			for (int conId : conIds) {
+				// Get information of designated contract
+				Contract contract = contractDao.getById(conId);
+				// Get status of designated contract
+				ConState conState = conStateDao.getConState(conId, Constant.STATE_DRAFTED);
+				// Initialize conBusiModel
+				ConBusiModel conBusiModel = new ConBusiModel();
+				if (contract != null) {
+					// Set contract id and name to conBusiModel object
+					conBusiModel.setConId(contract.getId());
+					conBusiModel.setConName(contract.getName());
+				}
+				if (conState != null) {
+					// Set draft time to conBusiModel object
+					conBusiModel.setDrafTime(conState.getTime()); 
+				}
+				conList.add(conBusiModel);
+			}
+		} catch (AppException e) {
+			e.printStackTrace();
+			throw new AppException("com.service.ContractService.getFinalizedContract");
+		}
+		// Return conList
+		return conList;
+>>>>>>> origin/LiWenjie
 	}
 	
 	public List<ConBusiModel> getDshphtList(int userId) throws AppException {
@@ -675,6 +738,7 @@ public class ContractService {
 	
 	public List<ConBusiModel> getApprovedContract(int userId) throws AppException {
 		// Initialize conList
+<<<<<<< HEAD
 				List<ConBusiModel> conList = new ArrayList<ConBusiModel>();
 				// nitialize conIds for saving contract id set that to be signed
 				List<Integer> conIds = new ArrayList<Integer>();
@@ -731,11 +795,65 @@ public class ContractService {
 				}
 				// Return conList
 				return conList;
+=======
+		List<ConBusiModel> conList = new ArrayList<ConBusiModel>();
+		// Initialize conIds,for saving id set of contracts that to be finalized
+		List<Integer> conIds = new ArrayList<Integer>();
+						
+		try {
+			/*
+			 * Get drafted contract , exist "STATE_CSIGNED" state
+			 */
+			
+			/*
+			* 1.Get id set of draft contracts
+			*/
+			List<Integer> drafConIds = contractDao.getIdsByUserId(userId);
+							
+			/*
+			 * 2.Screen out different id set of contracts to be finalized from drafted contracts,and save to conIds
+			 * Contracts to be finalized:exist "STATE_CSIGNED" state,do not exist "STATE_FINALIZED" state at the same time
+			 */
+			for (int dConId : drafConIds) {
+			if (conStateDao.isExist(dConId, Constant.STATE_APPROVED)) {
+					conIds.add(dConId);
+				}
+			}
+							
+			/* 
+			 * 3.Get contract's information that to be finalized,and save to  contract business entity object,and put entity class to conList 
+			 */
+			for (int conId : conIds) {
+				// Get information of designated contract
+				Contract contract = contractDao.getById(conId);
+				// Get status of designated contract
+				ConState conState = conStateDao.getConState(conId, Constant.STATE_DRAFTED);
+				// Initialize conBusiModel
+				ConBusiModel conBusiModel = new ConBusiModel();
+				if (contract != null) {
+					// Set contract id and name to conBusiModel object
+					conBusiModel.setConId(contract.getId());
+					conBusiModel.setConName(contract.getName());
+				}
+				if (conState != null) {
+					// Set draft time to conBusiModel object
+					conBusiModel.setDrafTime(conState.getTime()); 
+				}
+				conList.add(conBusiModel);
+			}
+		} catch (AppException e) {
+			e.printStackTrace();
+			throw new AppException("com.service.ContractService.getApprovedContract");
+		}
+		// Return conList
+		return conList;
+>>>>>>> origin/LiWenjie
 	}
 	
 	public List<ConBusiModel> getSignedContract(int userId) throws AppException{
 		// Initialize conList
 		List<ConBusiModel> conList = new ArrayList<ConBusiModel>();
+<<<<<<< HEAD
 		// nitialize conIds for saving contract id set that to be signed
 		List<Integer> conIds = new ArrayList<Integer>();
 		
@@ -765,6 +883,33 @@ public class ContractService {
 			
 			/*
 			 * 3. Get information of signed contract,and save to contract business entity object,and put the entity class to conList
+=======
+		// Initialize conIds,for saving id set of contracts that to be finalized
+		List<Integer> conIds = new ArrayList<Integer>();
+								
+		try {
+			/*
+			 * Get drafted contract , exist "STATE_CSIGNED" state
+			 */
+					
+			/*
+			* 1.Get id set of draft contracts
+			*/
+			List<Integer> drafConIds = contractDao.getIdsByUserId(userId);
+									
+			/*
+			 * 2.Screen out different id set of contracts to be finalized from drafted contracts,and save to conIds
+			 * Contracts to be finalized:exist "STATE_CSIGNED" state,do not exist "STATE_FINALIZED" state at the same time
+			 */
+			for (int dConId : drafConIds) {
+			if (conStateDao.isExist(dConId, Constant.STATE_SIGNED)) {
+					conIds.add(dConId);
+				}
+			}
+									
+			/* 
+			 * 3.Get contract's information that to be finalized,and save to  contract business entity object,and put entity class to conList 
+>>>>>>> origin/LiWenjie
 			 */
 			for (int conId : conIds) {
 				// Get information of designated contract
@@ -780,19 +925,28 @@ public class ContractService {
 				}
 				if (conState != null) {
 					// Set draft time to conBusiModel object
+<<<<<<< HEAD
 					conBusiModel.setDrafTime(conState.getTime());
+=======
+					conBusiModel.setDrafTime(conState.getTime()); 
+>>>>>>> origin/LiWenjie
 				}
 				conList.add(conBusiModel);
 			}
 		} catch (AppException e) {
 			e.printStackTrace();
+<<<<<<< HEAD
 			throw new AppException(
 					"com.service.ContractService.getSignedContract");
+=======
+			throw new AppException("com.service.ContractService.getSignedContract");
+>>>>>>> origin/LiWenjie
 		}
 		// Return conList
 		return conList;
 	}
 	
+<<<<<<< HEAD
 	public List<ConBusiModel> getAssignedContract(int userId) throws AppException {
 		// Initialize conList
 		List<ConBusiModel> conList = new ArrayList<ConBusiModel>();
@@ -825,6 +979,36 @@ public class ContractService {
 			
 			/*
 			 * 3. Get information of signed contract,and save to contract business entity object,and put the entity class to conList
+=======
+	public List<ConBusiModel> AssignedContract(int userId) throws AppException {
+		// Initialize conList
+		List<ConBusiModel> conList = new ArrayList<ConBusiModel>();
+		// Initialize conIds,for saving id set of contracts that to be finalized
+		List<Integer> conIds = new ArrayList<Integer>();
+								
+		try {
+			/*
+			 * Get drafted contract , exist "STATE_CSIGNED" state
+			 */
+					
+			/*
+			* 1.Get id set of draft contracts
+			*/
+			List<Integer> drafConIds = contractDao.getIdsByUserId(userId);
+									
+			/*
+			 * 2.Screen out different id set of contracts to be finalized from drafted contracts,and save to conIds
+			 * Contracts to be finalized:exist "STATE_CSIGNED" state,do not exist "STATE_FINALIZED" state at the same time
+			 */
+			for (int dConId : drafConIds) {
+			if (conStateDao.isExist(dConId, Constant.STATE_ASSIGNED)) {
+					conIds.add(dConId);
+				}
+			}
+									
+			/* 
+			 * 3.Get contract's information that to be finalized,and save to  contract business entity object,and put entity class to conList 
+>>>>>>> origin/LiWenjie
 			 */
 			for (int conId : conIds) {
 				// Get information of designated contract
@@ -840,14 +1024,22 @@ public class ContractService {
 				}
 				if (conState != null) {
 					// Set draft time to conBusiModel object
+<<<<<<< HEAD
 					conBusiModel.setDrafTime(conState.getTime());
+=======
+					conBusiModel.setDrafTime(conState.getTime()); 
+>>>>>>> origin/LiWenjie
 				}
 				conList.add(conBusiModel);
 			}
 		} catch (AppException e) {
 			e.printStackTrace();
+<<<<<<< HEAD
 			throw new AppException(
 					"com.service.ContractService.getAssignedContract");
+=======
+			throw new AppException("com.service.ContractService.getAssignedContract");
+>>>>>>> origin/LiWenjie
 		}
 		// Return conList
 		return conList;
@@ -914,7 +1106,10 @@ public class ContractService {
 	}
 	
 	
+<<<<<<< HEAD
 	
+=======
+>>>>>>> origin/LiWenjie
 	public boolean sign(ConProcess conProcess) throws AppException {
 		boolean flag = false;// Define flag
 		
@@ -944,6 +1139,7 @@ public class ContractService {
 		return flag;
 	}
 	
+<<<<<<< HEAD
 	public boolean assign(ConProcess conProcess) throws AppException {
 		boolean flag = false;// Define flag
 		
@@ -973,6 +1169,8 @@ public class ContractService {
 		return flag;
 	}
 	
+=======
+>>>>>>> origin/LiWenjie
 	
 	private String generateConNum() {
 		// Initialize date

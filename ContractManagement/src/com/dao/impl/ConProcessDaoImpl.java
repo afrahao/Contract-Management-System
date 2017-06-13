@@ -181,7 +181,7 @@ public class ConProcessDaoImpl implements ConProcessDao{
 			psmt.setInt(1, conProcess.getState());
 			psmt.setString(2, conProcess.getContent());
 
-			// Date format is：yyyy-MM-dd hh:mm:ss     
+			// Date format is锛歽yyy-MM-dd聽hh:mm:ss聽聽聽聽聽
 			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 			java.sql.Timestamp time = new java.sql.Timestamp(conProcess.getTime().getTime());
 			df.format(time); // Formatting time

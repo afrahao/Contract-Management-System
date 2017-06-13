@@ -32,9 +32,13 @@
 		<div class="list">
 		  <table>
 			<tr>
+<<<<<<< HEAD
 				<th>
 					Contract name
 				</th>
+=======
+				
+>>>>>>> origin/LiWenjie
 				<th class="th1">
 					Draft time
 				</th>
@@ -59,7 +63,13 @@
 		  </table>
 		</div>
 
+<<<<<<< HEAD
 		<div align="right" class="pagelist">					
+=======
+		<th>
+					Contract name
+				</th><div align="right" class="pagelist">					
+>>>>>>> origin/LiWenjie
 			<a href="#"><img src="images/page/first.png"  alt="" /></a> &nbsp;
 			<a href="#"><img src="images/page/pre.png"  alt="" /></a>&nbsp;
 			<a href="#"><img src="images/page/next.png"  alt="" /></a>&nbsp;

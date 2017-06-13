@@ -66,6 +66,106 @@ public class RoleDaoImpl implements RoleDao {
 		return role;
 	}
 	
+	public void modifyDes(String des,int id){
+		//Declare Connection object,PreparedStatement object and ResultSet object
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		int rs = 0;
+		try {
+			// Create database connection
+			conn = DBUtil.getConnection();
+			// Declare operation statement,query role's information based on role id, "?" is a placeholder
+			String sql = "update t_role " 
+			+"set description= ? "
+					+"where id=? ";
+			// Pre-compiled sql
+			psmt =(PreparedStatement) conn.prepareStatement(sql);
+			// Set values for the placeholder  '?'
+			psmt.setString(1, des);
+			psmt.setInt(2, id);
+			rs = psmt.executeUpdate();
+			
+			// Save user's information by using Pole entity object when queried the results set 
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+		} finally {
+			// Close the database operation object, release resources
+			DBUtil.closeStatement(psmt);
+			DBUtil.closeConnection(conn);
+		}
+		
+	}
+	
+	public void modifyFun(String function,int id){
+		//Declare Connection object,PreparedStatement object and ResultSet object
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		int rs=0;
+		try {
+			// Create database connection
+			conn = DBUtil.getConnection();
+			// Declare operation statement,query role's information based on role id, "?" is a placeholder
+			String sql = "update t_role " 
+			+"set function_ids= ? "
+					+"where id=? ";
+			// Pre-compiled sql
+			psmt =(PreparedStatement) conn.prepareStatement(sql);
+			// Set values for the placeholder  '?'
+			psmt.setString(1, function);
+			psmt.setInt(2, id);
+			rs = psmt.executeUpdate();
+			
+			// Save user's information by using Pole entity object when queried the results set 
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+		} finally {
+			// Close the database operation object, release resources
+			DBUtil.closeStatement(psmt);
+			DBUtil.closeConnection(conn);
+		}
+		
+	}
+	
+	public void addRole(Role role){
+		//Declare Connection object,PreparedStatement object and ResultSet object
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		int rs;
+		try {
+			// Create database connection
+			conn = DBUtil.getConnection();
+			// Declare operation statement,query role's information based on role id, "?" is a placeholder
+			String sql = "insert into t_role " 
+			+"(name,description,function_ids,del) "
+					+"values"
+					+"(?,?,?,?)";
+			// Pre-compiled sql
+			psmt =(PreparedStatement) conn.prepareStatement(sql);
+			// Set values for the placeholder  '?'
+			psmt.setString(1, role.getName());
+			psmt.setString(2, role.getDescription());
+			psmt.setString(3, role.getFuncIds());
+			psmt.setInt(4, role.getDel());
+			rs = psmt.executeUpdate();
+			
+			// Save user's information by using Pole entity object when queried the results set 
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+		} finally {
+			// Close the database operation object, release resources
+			DBUtil.closeStatement(psmt);
+			DBUtil.closeConnection(conn);
+		}
+		
+	}
+	
+	
 	/**
 	 * Query all role object set
 	 * 

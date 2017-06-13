@@ -27,7 +27,11 @@ public class ConfigurePermissionListServlet extends HttpServlet{
 		// Set character set of request to "UTF-8"
 		request.setCharacterEncoding("UTF-8");
 		
+<<<<<<< HEAD
 		// Declare session 
+=======
+		// Declare session
+>>>>>>> origin/LiWenjie
 		HttpSession session = null;
 		// Get session by using request
 		session = request.getSession();

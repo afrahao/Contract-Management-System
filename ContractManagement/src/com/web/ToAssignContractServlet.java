@@ -57,6 +57,7 @@ public class ToAssignContractServlet extends HttpServlet {
 			 * RoleId = 2 corresponding to the role's primary key who have rights as above in contract rights table
 			 */
 			int roleId = 2;
+<<<<<<< HEAD
 			int RoleId = 1;
 			// Initialize userList
 			List<User> userList = new ArrayList<User>();
@@ -66,6 +67,12 @@ public class ToAssignContractServlet extends HttpServlet {
 			userList1 = userService.getUserListByRoleId(RoleId);
 			
 			userList.addAll(userList1);
+=======
+			// Initialize userList
+			List<User> userList = new ArrayList<User>();
+			// Get user list according to role id
+			userList = userService.getUserListByRoleId(roleId);
+>>>>>>> origin/LiWenjie
 			
 			// Save contract to request
 			request.setAttribute("contract", contract);

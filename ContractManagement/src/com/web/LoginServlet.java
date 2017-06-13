@@ -1,9 +1,12 @@
 package com.web;
 
 import java.io.IOException;
+<<<<<<< HEAD
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
+=======
+>>>>>>> origin/LiWenjie
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -12,10 +15,14 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.swing.JOptionPane;
 
+<<<<<<< HEAD
 import com.model.ConBusiModel;
 import com.model.Contract;
 import com.model.Role;
 import com.service.ContractService;
+=======
+import com.model.Role;
+>>>>>>> origin/LiWenjie
 import com.service.UserService;
 import com.utils.AppException;
 
@@ -60,6 +67,7 @@ public class LoginServlet extends HttpServlet {
 				//Call business logic layer to get role's information
 				role = userService.getUserRole(userId);
 				
+<<<<<<< HEAD
 				// Initialize contractService
 				ContractService contractService = new ContractService();
 				// Initialize contractList
@@ -101,6 +109,8 @@ public class LoginServlet extends HttpServlet {
 					tip4="You have a contract that must be signed soon:"+contractSign.getName()+"\n";
 				}
 				
+=======
+>>>>>>> origin/LiWenjie
 				// Process page jump according to the user's role
 				if ( role == null) {
 					//Redirect to new user page
@@ -112,10 +122,13 @@ public class LoginServlet extends HttpServlet {
 					//Redirect to operator page 
 					response.sendRedirect("operatorFrame");
 				}
+<<<<<<< HEAD
 				if(contractFina !=null || contractAppr!=null ||contractSign!=null ||contractCoun!=null)
 				{
 					JOptionPane.showMessageDialog(null, tip1+tip2+tip3+tip4, "tip", JOptionPane.INFORMATION_MESSAGE);
 				}
+=======
+>>>>>>> origin/LiWenjie
 			} else {// Login failed
 				// Set prompt message
 				message = "Incorrect user name or password!";
@@ -130,9 +143,12 @@ public class LoginServlet extends HttpServlet {
 			e.printStackTrace();
 			// Redirect to exception page
 			response.sendRedirect("toError");
+<<<<<<< HEAD
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+=======
+>>>>>>> origin/LiWenjie
 		}
 	}
 

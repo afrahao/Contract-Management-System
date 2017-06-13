@@ -22,6 +22,51 @@
   	</servlet-mapping>
   	
   	<servlet>
+  		<servlet-name>EditRole</servlet-name>
+  		<servlet-class>com.web.EditRole</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>EditRole</servlet-name>
+  		<url-pattern>/EditRole</url-pattern>
+  	</servlet-mapping>
+  	
+  	<servlet>
+  		<servlet-name>roleList</servlet-name>
+  		<servlet-class>com.web.ToRoleList</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>roleList</servlet-name>
+  		<url-pattern>/roleList</url-pattern>
+  	</servlet-mapping>
+  	
+  	<servlet>
+  		<servlet-name>submit</servlet-name>
+  		<servlet-class>com.web.Submitrole</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>submit</servlet-name>
+  		<url-pattern>/submit</url-pattern>
+  	</servlet-mapping>
+  	
+  	<servlet>
+  		<servlet-name>toAddRole</servlet-name>
+  		<servlet-class>com.web.ToAddRole</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>toAddRole</servlet-name>
+  		<url-pattern>/toAddRole</url-pattern>
+  	</servlet-mapping>
+  	
+  	<servlet>
+  		<servlet-name>addRole</servlet-name>
+  		<servlet-class>com.web.AddRole</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>addRole</servlet-name>
+  		<url-pattern>/addRole</url-pattern>
+  	</servlet-mapping>
+  	
+  	<servlet>
   		<servlet-name>login</servlet-name>
   		<servlet-class>com.web.LoginServlet</servlet-class>
   	</servlet>
@@ -248,6 +293,7 @@
   	</servlet-mapping>
   	
   	<servlet>
+<<<<<<< HEAD
   		<servlet-name>assignedContract</servlet-name>
   		<servlet-class>com.web.AssignedContractServlet</servlet-class>
   	</servlet>
@@ -257,6 +303,8 @@
   	</servlet-mapping>
   	
   	<servlet>
+=======
+>>>>>>> origin/LiWenjie
   		<servlet-name>toAssignContract</servlet-name>
   		<servlet-class>com.web.ToAssignContractServlet</servlet-class>
   	</servlet>
@@ -336,6 +384,7 @@
   		<servlet-name>operatorFrame</servlet-name>
   		<url-pattern>/operatorFrame</url-pattern>
   	</servlet-mapping>
+<<<<<<< HEAD
   	
   	<servlet>
   		<servlet-name>userManagement</servlet-name>
@@ -428,5 +477,95 @@
   	</servlet-mapping>
   	
   	
+=======
+  	<servlet>
+  		<servlet-name>toQProcess</servlet-name>
+  		<servlet-class>com.web.ToQProcess</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>toQProcess</servlet-name>
+  		<url-pattern>/toQProcess</url-pattern>
+  	</servlet-mapping>
+  	<servlet>
+  		<servlet-name>toContractInfo</servlet-name>
+  		<servlet-class>com.web.ToContractInfo</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>toContractInfo</servlet-name>
+  		<url-pattern>/toContractInfo</url-pattern>
+  	</servlet-mapping>
+  	<servlet>
+  		<servlet-name>toCustomerInfo</servlet-name>
+  		<servlet-class>com.web.ToCustomerInfo</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>toCustomerInfo</servlet-name>
+  		<url-pattern>/toCustomerInfo</url-pattern>
+  	</servlet-mapping>
+  	<servlet>
+  		<servlet-name>customerDetail</servlet-name>
+  		<servlet-class>com.web.CustomerDetail</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>customerDetail</servlet-name>
+  		<url-pattern>/customerDetail</url-pattern>
+  	</servlet-mapping>
+  	<servlet>
+  		<servlet-name>addCustomer</servlet-name>
+  		<servlet-class>com.web.AddCustomer</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>addCustomer</servlet-name>
+  		<url-pattern>/addCustomer</url-pattern>
+  	</servlet-mapping>
+  	<servlet>
+  		<servlet-name>toAddCustomer</servlet-name>
+  		<servlet-class>com.web.ToAddCustomer</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>toAddCustomer</servlet-name>
+  		<url-pattern>/toAddCustomer</url-pattern>
+  	</servlet-mapping>
+  	<servlet>
+  		<servlet-name>deleteCustomer</servlet-name>
+  		<servlet-class>com.web.DeleteCustomer</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>deleteCustomer</servlet-name>
+  		<url-pattern>/deleteCustomer</url-pattern>
+  	</servlet-mapping>
+  	<servlet>
+  		<servlet-name>toModifyCustomer</servlet-name>
+  		<servlet-class>com.web.ToModifyCustomer</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>toModifyCustomer</servlet-name>
+  		<url-pattern>/toModifyCustomer</url-pattern>
+  	</servlet-mapping>
+  	<servlet>
+  		<servlet-name>modifyCustomer</servlet-name>
+  		<servlet-class>com.web.ModifyCustomer</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>modifyCustomer</servlet-name>
+  		<url-pattern>/modifyCustomer</url-pattern>
+  	</servlet-mapping>
+  	<servlet>
+  		<servlet-name>toTerminateContract</servlet-name>
+  		<servlet-class>com.web.ToTerminateContract</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>toTerminateContract</servlet-name>
+  		<url-pattern>/toTerminateContract</url-pattern>
+  	</servlet-mapping>
+  	<servlet>
+  		<servlet-name>terminateContract</servlet-name>
+  		<servlet-class>com.web.DeleteContract</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>terminateContract</servlet-name>
+  		<url-pattern>/terminateContract</url-pattern>
+  	</servlet-mapping>
+>>>>>>> origin/LiWenjie
   	
 </web-app>

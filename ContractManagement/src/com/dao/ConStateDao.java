@@ -45,7 +45,11 @@ public interface ConStateDao {
 	 * 
 	 * @param con_id Countract id
 	 * @param type Operation type
+<<<<<<< HEAD
 	 * @return boolean Exist return true，otherwise return false
+=======
+	 * @return boolean Exist return true锛宱therwise return false
+>>>>>>> origin/LiWenjie
 	 * @throws AppException
 	 */
 	public boolean isExist(int con_id, int type) throws AppException;

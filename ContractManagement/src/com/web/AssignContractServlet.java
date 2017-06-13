@@ -8,7 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+<<<<<<< HEAD
 import com.model.ConProcess;
+=======
+>>>>>>> origin/LiWenjie
 import com.service.ContractService;
 import com.utils.AppException;
 import com.utils.Constant;
@@ -48,6 +51,7 @@ public class AssignContractServlet extends HttpServlet {
 		String[] spht = request.getParameterValues("spht");
 		// Get assigned signer's id
 		String[] qdht = request.getParameterValues("qdht");
+<<<<<<< HEAD
 		
 		ConProcess conProcess = new ConProcess();
 		conProcess.setConId(conId);
@@ -56,6 +60,8 @@ public class AssignContractServlet extends HttpServlet {
 		
 		
 		conProcess.setState(Constant.DONE);
+=======
+>>>>>>> origin/LiWenjie
 
 		try {
 			//  Initialize contractService
@@ -78,8 +84,11 @@ public class AssignContractServlet extends HttpServlet {
 				contractService.distribute(conId, Integer.parseInt(qd), Constant.PROCESS_SIGN);
 			}
 		
+<<<<<<< HEAD
 			contractService.distribute(conId, Integer.parseInt(userId.toString()), Constant.PROCESS_ASSIGN);
 			contractService.assign(conProcess);
+=======
+>>>>>>> origin/LiWenjie
 			// After complete assignment,redirect to page of to be distributed
 			response.sendRedirect("assignContractList");
 		} catch (AppException e) {

@@ -57,7 +57,12 @@
 				</tr>
 				<%
 					}
+<<<<<<< HEAD
 				%>
+=======
+				 %>
+					
+>>>>>>> origin/LiWenjie
 				<tr>
 					<td colspan="3">
 					</td>
@@ -66,10 +71,14 @@
 		</div>
 
 		<div align="right" class="pagelist">					
+<<<<<<< HEAD
 			<a href="#"><img src="images/page/first.png"  alt="" /></a> &nbsp;
 			<a href="#"><img src="images/page/pre.png"  alt="" /></a>&nbsp;
 			<a href="#"><img src="images/page/next.png"  alt="" /></a>&nbsp;
 			<a href="#"><img src="images/page/last.png"  alt="" /></a>&nbsp;
+=======
+			
+>>>>>>> origin/LiWenjie
 					
 			<span class="pageinfo">
 				Total&nbsp;<strong>2</strong>&nbsp;pages&nbsp;<strong>13</strong>&nbsp;records

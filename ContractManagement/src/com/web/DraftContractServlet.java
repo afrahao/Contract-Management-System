@@ -12,7 +12,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+<<<<<<< HEAD
 import com.model.Contract;
+=======
+import com.dao.impl.CustomerDaoImpl;
+import com.model.Contract;
+import com.model.Customer;
+>>>>>>> origin/LiWenjie
 import com.service.ContractService;
 import com.utils.AppException;
 
@@ -46,7 +52,30 @@ public class DraftContractServlet extends HttpServlet {
 			String content = request.getParameter("content");
 			String beginTime = request.getParameter("beginTime");
 			String endTime = request.getParameter("endTime");
+<<<<<<< HEAD
 			
+=======
+			CustomerDaoImpl customerdao=new CustomerDaoImpl();
+			try {
+				if(customerdao.isExist(name)==false)
+				{
+					Customer cust=new Customer();
+					cust.setAccout("");
+					cust.setAddress("");
+					cust.setBank("");
+					cust.setCode("");
+					cust.setDel(0);
+					cust.setFax("");
+					cust.setName(customer);
+					cust.setNum("");
+					cust.setTel("");
+					customerdao.addCustomer(cust);
+				}
+			} catch (AppException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+>>>>>>> origin/LiWenjie
 			// Instantiate begin and end of java.util.Date type,for accepting transformed beginTime and endTime
 			Date begin = new Date();
 			Date end = new Date();
@@ -72,7 +101,10 @@ public class DraftContractServlet extends HttpServlet {
 				
 				// Initialize contractService
 				ContractService contractService = new ContractService();
+<<<<<<< HEAD
 				ContractService contractServiceadmin = new ContractService();
+=======
+>>>>>>> origin/LiWenjie
 				
 				// Operation success or failure, return draft page, giving prompt message
 				if (contractService.draft(contract)) {

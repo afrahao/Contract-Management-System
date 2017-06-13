@@ -52,6 +52,7 @@ public class UserService {
 		return flag;
 	}
 	
+<<<<<<< HEAD
 	public boolean DeleteUser(int id) throws AppException {
 		boolean flag = false;//  Define flag 
 		try {
@@ -65,6 +66,8 @@ public class UserService {
 		return flag;
 	}
 	
+=======
+>>>>>>> origin/LiWenjie
 	/**
 	 * User login
 	 * 
@@ -265,6 +268,7 @@ public class UserService {
 		return flag;
 	}
 
+<<<<<<< HEAD
 	public boolean ModifyPassword(int id, String password) throws AppException {
 		boolean flag = false;//  Define flag 
 		try {
@@ -311,4 +315,6 @@ public class UserService {
 		return flag;
 	}
 
+=======
+>>>>>>> origin/LiWenjie
 }

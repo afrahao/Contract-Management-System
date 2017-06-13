@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package com.web;
 
 import java.io.IOException;
@@ -67,3 +68,6 @@ public class AssignedContractServlet extends HttpServlet{
 	}
 
 }
+=======
+
+>>>>>>> origin/LiWenjie

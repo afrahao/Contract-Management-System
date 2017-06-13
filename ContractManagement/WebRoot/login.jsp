@@ -91,8 +91,14 @@
 							</td>
 						</tr>
 					</table>
+<<<<<<< HEAD
 					<a href="toChangePassword">Change Password</a>
 				</div>
+=======
+					
+				</div>
+					
+>>>>>>> origin/LiWenjie
 			</form>
 		</div>
 		<!-- main end -->
