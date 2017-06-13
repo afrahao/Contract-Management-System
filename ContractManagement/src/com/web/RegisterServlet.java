@@ -1,4 +1,4 @@
-package com.ruanko.web;
+package com.web;
 
 import java.io.IOException;
 
@@ -7,9 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ruanko.model.User;
-import com.ruanko.service.UserService;
-import com.ruanko.utils.AppException;
+import com.model.User;
+import com.service.UserService;
+import com.utils.AppException;
 
 /**
  * Servlet for registration
@@ -35,7 +35,7 @@ public class RegisterServlet extends HttpServlet {
 		 * Call methods in business logic layer to process business logic 
 		 */
 		try {
-			//Instantiate the object of entity class User  
+			//Instantiate the entity class object User 
 			User user = new User();
 			// Initialize the user business logic class
 			UserService userService = new UserService();
