@@ -33,6 +33,7 @@
 
 		<!-- main start -->
 		<div class="main">
+			<a href="index">Comeback</a>
 			<form action="register" method="post">
 
 				<div class="register_main">
