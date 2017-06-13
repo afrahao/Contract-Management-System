@@ -22,6 +22,51 @@
   	</servlet-mapping>
   	
   	<servlet>
+  		<servlet-name>EditRole</servlet-name>
+  		<servlet-class>com.web.EditRole</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>EditRole</servlet-name>
+  		<url-pattern>/EditRole</url-pattern>
+  	</servlet-mapping>
+  	
+  	<servlet>
+  		<servlet-name>roleList</servlet-name>
+  		<servlet-class>com.web.ToRoleList</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>roleList</servlet-name>
+  		<url-pattern>/roleList</url-pattern>
+  	</servlet-mapping>
+  	
+  	<servlet>
+  		<servlet-name>submit</servlet-name>
+  		<servlet-class>com.web.Submitrole</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>submit</servlet-name>
+  		<url-pattern>/submit</url-pattern>
+  	</servlet-mapping>
+  	
+  	<servlet>
+  		<servlet-name>toAddRole</servlet-name>
+  		<servlet-class>com.web.ToAddRole</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>toAddRole</servlet-name>
+  		<url-pattern>/toAddRole</url-pattern>
+  	</servlet-mapping>
+  	
+  	<servlet>
+  		<servlet-name>addRole</servlet-name>
+  		<servlet-class>com.web.AddRole</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>addRole</servlet-name>
+  		<url-pattern>/addRole</url-pattern>
+  	</servlet-mapping>
+  	
+  	<servlet>
   		<servlet-name>login</servlet-name>
   		<servlet-class>com.web.LoginServlet</servlet-class>
   	</servlet>
@@ -38,4 +83,382 @@
   		<servlet-name>register</servlet-name>
   		<url-pattern>/register</url-pattern>
   	</servlet-mapping>
+  	
+  	<servlet>
+  		<servlet-name>toRegister</servlet-name>
+  		<servlet-class>com.web.ToRegisterServlet</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>toRegister</servlet-name>
+  		<url-pattern>/toRegister</url-pattern>
+  	</servlet-mapping>
+  	
+  	<servlet>
+  		<servlet-name>toNewUser</servlet-name>
+  		<servlet-class>com.web.ToNewUserServlet</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>toNewUser</servlet-name>
+  		<url-pattern>/toNewUser</url-pattern>
+  	</servlet-mapping>
+  	
+  	<servlet>
+  		<servlet-name>draft</servlet-name>
+  		<servlet-class>com.web.DraftContractServlet</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>draft</servlet-name>
+  		<url-pattern>/draft</url-pattern>
+  	</servlet-mapping>
+  	
+  	<servlet>
+  		<servlet-name>toDraft</servlet-name>
+  		<servlet-class>com.web.ToDraftServlet</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>toDraft</servlet-name>
+  		<url-pattern>/toDraft</url-pattern>
+  	</servlet-mapping>
+  	
+  	<servlet>
+  		<servlet-name>toError</servlet-name>
+  		<servlet-class>com.web.ToErrorServlet</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>toError</servlet-name>
+  		<url-pattern>/toError</url-pattern>
+  	</servlet-mapping>
+  	
+  	<servlet>
+  		<servlet-name>countersignContractList</servlet-name>
+  		<servlet-class>com.web.CountersignContractListServlet</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>countersignContractList</servlet-name>
+  		<url-pattern>/countersignContractList</url-pattern>
+  	</servlet-mapping>
+  	
+  	<servlet>
+  		<servlet-name>countersignedContract</servlet-name>
+  		<servlet-class>com.web.CountersignedContractServlet</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>countersignedContract</servlet-name>
+  		<url-pattern>/countersignedContract</url-pattern>
+  	</servlet-mapping>
+  	
+  	  	<servlet>
+  		<servlet-name>countersignOpinion</servlet-name>
+  		<servlet-class>com.web.CountersignOpinionServlet</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>countersignOpinion</servlet-name>
+  		<url-pattern>/countersignOpinion</url-pattern>
+  	</servlet-mapping>
+  	
+  	<servlet>
+  		<servlet-name>toCountersignOpinion</servlet-name>
+  		<servlet-class>com.web.ToCountersignOpinionServlet</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>toCountersignOpinion</servlet-name>
+  		<url-pattern>/toCountersignOpinion</url-pattern>
+  	</servlet-mapping>
+  	
+  	<servlet>
+  		<servlet-name>signContract</servlet-name>
+  		<servlet-class>com.web.SignServlet</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>signContract</servlet-name>
+  		<url-pattern>/signContract</url-pattern>
+  	</servlet-mapping>
+  	
+  	<servlet>
+  		<servlet-name>signedContract</servlet-name>
+  		<servlet-class>com.web.SignedContractServlet</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>signedContract</servlet-name>
+  		<url-pattern>/signedContract</url-pattern>
+  	</servlet-mapping>
+  	
+  	<servlet>
+  		<servlet-name>toSignContract</servlet-name>
+  		<servlet-class>com.web.ToSignContractServlet</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>toSignContract</servlet-name>
+  		<url-pattern>/toSignContract</url-pattern>
+  	</servlet-mapping>
+  	
+  	<servlet>
+  		<servlet-name>signContractList</servlet-name>
+  		<servlet-class>com.web.SignContractListServlet</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>signContractList</servlet-name>
+  		<url-pattern>/signContractList</url-pattern>
+  	</servlet-mapping>
+  	
+  	<servlet>
+  		<servlet-name>approveContractList</servlet-name>
+  		<servlet-class>com.web.ApproveContractListServlet</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>approveContractList</servlet-name>
+  		<url-pattern>/approveContractList</url-pattern>
+  	</servlet-mapping>
+  	
+  	<servlet>
+  		<servlet-name>approveContract</servlet-name>
+  		<servlet-class>com.web.ApproveContractServlet</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>approveContract</servlet-name>
+  		<url-pattern>/approveContract</url-pattern>
+  	</servlet-mapping>
+  	
+  	<servlet>
+  		<servlet-name>approvedContract</servlet-name>
+  		<servlet-class>com.web.ApprovedContractServlet</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>approvedContract</servlet-name>
+  		<url-pattern>/approvedContract</url-pattern>
+  	</servlet-mapping>
+  	
+  	<servlet>
+  		<servlet-name>toApproveContract</servlet-name>
+  		<servlet-class>com.web.ToApproveContractServlet</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>toApproveContract</servlet-name>
+  		<url-pattern>/toApproveContract</url-pattern>
+  	</servlet-mapping>
+  	
+  		
+  	<servlet>
+  		<servlet-name>showCountersignOpinion</servlet-name>
+  		<servlet-class>com.web.ShowCountersignOpinionServlet</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>showCountersignOpinion</servlet-name>
+  		<url-pattern>/showCountersignOpinion</url-pattern>
+  	</servlet-mapping>
+  	
+  	<servlet>
+  		<servlet-name>finalizeContract</servlet-name>
+  		<servlet-class>com.web.FinalizeContractServlet</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>finalizeContract</servlet-name>
+  		<url-pattern>/finalizeContract</url-pattern>
+  	</servlet-mapping>
+  	
+  	<servlet>
+  		<servlet-name>finalizedContract</servlet-name>
+  		<servlet-class>com.web.FinalizedContractServlet</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>finalizedContract</servlet-name>
+  		<url-pattern>/finalizedContract</url-pattern>
+  	</servlet-mapping>
+  	
+  	<servlet>
+  		<servlet-name>toFinalizeContract</servlet-name>
+  		<servlet-class>com.web.ToFinalizeContractServlet</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>toFinalizeContract</servlet-name>
+  		<url-pattern>/toFinalizeContract</url-pattern>
+  	</servlet-mapping>
+  	
+  	<servlet>
+  		<servlet-name>finalizeContractList</servlet-name>
+  		<servlet-class>com.web.FinalizeContractListServlet</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>finalizeContractList</servlet-name>
+  		<url-pattern>/finalizeContractList</url-pattern>
+  	</servlet-mapping>
+  	
+  	<servlet>
+  		<servlet-name>assignContract</servlet-name>
+  		<servlet-class>com.web.AssignContractServlet</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>assignContract</servlet-name>
+  		<url-pattern>/assignContract</url-pattern>
+  	</servlet-mapping>
+  	
+  	<servlet>
+  		<servlet-name>toAssignContract</servlet-name>
+  		<servlet-class>com.web.ToAssignContractServlet</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>toAssignContract</servlet-name>
+  		<url-pattern>/toAssignContract</url-pattern>
+  	</servlet-mapping>
+  	
+  	<servlet>
+  		<servlet-name>assignContractList</servlet-name>
+  		<servlet-class>com.web.AssignContractListServlet</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>assignContractList</servlet-name>
+  		<url-pattern>/assignContractList</url-pattern>
+  	</servlet-mapping>
+  	
+  	<servlet>
+  		<servlet-name>configurePermission</servlet-name>
+  		<servlet-class>com.web.ConfigurePermissionServlet</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>configurePermission</servlet-name>
+  		<url-pattern>/configurePermission</url-pattern>
+  	</servlet-mapping>
+  	
+  	<servlet>
+  		<servlet-name>toConfigurePermission</servlet-name>
+  		<servlet-class>com.web.ToConfigurePermissionServlet</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>toConfigurePermission</servlet-name>
+  		<url-pattern>/toConfigurePermission</url-pattern>
+  	</servlet-mapping>
+  	
+  	<servlet>
+  		<servlet-name>configurePermissionList</servlet-name>
+  		<servlet-class>com.web.ConfigurePermissionListServlet</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>configurePermissionList</servlet-name>
+  		<url-pattern>/configurePermissionList</url-pattern>
+  	</servlet-mapping>
+  	
+  	<servlet>
+  		<servlet-name>contractDetail</servlet-name>
+  		<servlet-class>com.web.ContractDetailServlet</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>contractDetail</servlet-name>
+  		<url-pattern>/contractDetail</url-pattern>
+  	</servlet-mapping>
+  	
+  	<servlet>
+  		<servlet-name>logout</servlet-name>
+  		<servlet-class>com.web.LogoutServlet</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>logout</servlet-name>
+  		<url-pattern>/logout</url-pattern>
+  	</servlet-mapping>
+  	
+  	<servlet>
+  		<servlet-name>adminFrame</servlet-name>
+  		<servlet-class>com.web.AdminFrameServlet</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>adminFrame</servlet-name>
+  		<url-pattern>/adminFrame</url-pattern>
+  	</servlet-mapping>
+  	
+  	<servlet>
+  		<servlet-name>operatorFrame</servlet-name>
+  		<servlet-class>com.web.OperatorFrameServlet</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>operatorFrame</servlet-name>
+  		<url-pattern>/operatorFrame</url-pattern>
+  	</servlet-mapping>
+  	<servlet>
+  		<servlet-name>toQProcess</servlet-name>
+  		<servlet-class>com.web.ToQProcess</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>toQProcess</servlet-name>
+  		<url-pattern>/toQProcess</url-pattern>
+  	</servlet-mapping>
+  	<servlet>
+  		<servlet-name>toContractInfo</servlet-name>
+  		<servlet-class>com.web.ToContractInfo</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>toContractInfo</servlet-name>
+  		<url-pattern>/toContractInfo</url-pattern>
+  	</servlet-mapping>
+  	<servlet>
+  		<servlet-name>toCustomerInfo</servlet-name>
+  		<servlet-class>com.web.ToCustomerInfo</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>toCustomerInfo</servlet-name>
+  		<url-pattern>/toCustomerInfo</url-pattern>
+  	</servlet-mapping>
+  	<servlet>
+  		<servlet-name>customerDetail</servlet-name>
+  		<servlet-class>com.web.CustomerDetail</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>customerDetail</servlet-name>
+  		<url-pattern>/customerDetail</url-pattern>
+  	</servlet-mapping>
+  	<servlet>
+  		<servlet-name>addCustomer</servlet-name>
+  		<servlet-class>com.web.AddCustomer</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>addCustomer</servlet-name>
+  		<url-pattern>/addCustomer</url-pattern>
+  	</servlet-mapping>
+  	<servlet>
+  		<servlet-name>toAddCustomer</servlet-name>
+  		<servlet-class>com.web.ToAddCustomer</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>toAddCustomer</servlet-name>
+  		<url-pattern>/toAddCustomer</url-pattern>
+  	</servlet-mapping>
+  	<servlet>
+  		<servlet-name>deleteCustomer</servlet-name>
+  		<servlet-class>com.web.DeleteCustomer</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>deleteCustomer</servlet-name>
+  		<url-pattern>/deleteCustomer</url-pattern>
+  	</servlet-mapping>
+  	<servlet>
+  		<servlet-name>toModifyCustomer</servlet-name>
+  		<servlet-class>com.web.ToModifyCustomer</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>toModifyCustomer</servlet-name>
+  		<url-pattern>/toModifyCustomer</url-pattern>
+  	</servlet-mapping>
+  	<servlet>
+  		<servlet-name>modifyCustomer</servlet-name>
+  		<servlet-class>com.web.ModifyCustomer</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>modifyCustomer</servlet-name>
+  		<url-pattern>/modifyCustomer</url-pattern>
+  	</servlet-mapping>
+  	<servlet>
+  		<servlet-name>toTerminateContract</servlet-name>
+  		<servlet-class>com.web.ToTerminateContract</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>toTerminateContract</servlet-name>
+  		<url-pattern>/toTerminateContract</url-pattern>
+  	</servlet-mapping>
+  	<servlet>
+  		<servlet-name>terminateContract</servlet-name>
+  		<servlet-class>com.web.DeleteContract</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>terminateContract</servlet-name>
+  		<url-pattern>/terminateContract</url-pattern>
+  	</servlet-mapping>
+  	
 </web-app>
