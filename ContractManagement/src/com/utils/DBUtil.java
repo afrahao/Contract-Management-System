@@ -6,7 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-
+/**
+ * Database tool class
+ */
 public class DBUtil {
 
 	// url is database connection string,the format of url is:Database protocol :// <database server address> [<: port>]/<Database name>?Character Settings
@@ -26,7 +28,11 @@ public class DBUtil {
 		}
 	}
 
-	
+	/**
+	 * Get the database connection, create a new connection for each time the method is called
+	 * 
+	 * @return If create the connection is successful, returns the database connection object; otherwise returns null
+	 */
 	public static Connection getConnection() {
 		Connection conn = null;
 		try {
@@ -40,7 +46,11 @@ public class DBUtil {
 		return conn;
 	}
 
-	
+	/**
+	 * Close database connection
+	 * 
+	 * @param Connection  database connection object
+	 */
 	public static void closeConnection(Connection conn) {
 		try {
 			if ((conn != null) && (!conn.isClosed())) {
@@ -52,7 +62,11 @@ public class DBUtil {
 		}
 	}
 
-	
+	/**
+	 * Close the database query commands
+	 * 
+	 * @param Statement Database query commands
+	 */
 	public static void closeStatement(Statement st) {
 		try {
 			if ((st != null) && (!st.isClosed())) {
@@ -64,7 +78,11 @@ public class DBUtil {
 		}
 	}
 
-	
+	/**
+	 * Close the database query results
+	 * 
+	 * @param ResultSet database query results
+	 */
 	public static void closeResultSet(ResultSet rs) {
 		try {
 			if ((rs != null) && (!rs.isClosed())) {
@@ -76,7 +94,9 @@ public class DBUtil {
 		}
 	}
 
-	
+	/**
+	 * Test whether the database connection is successful
+	 */
 	public static void main(String[] args) {
 		getConnection();
 	}
