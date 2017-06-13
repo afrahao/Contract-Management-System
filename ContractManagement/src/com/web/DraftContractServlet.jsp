@@ -72,6 +72,7 @@ public class DraftContractServlet extends HttpServlet {
 				
 				// Initialize contractService
 				ContractService contractService = new ContractService();
+				ContractService contractServiceadmin = new ContractService();
 				
 				// Operation success or failure, return draft page, giving prompt message
 				if (contractService.draft(contract)) {
