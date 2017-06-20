@@ -1,38 +1,29 @@
 package com.web;
 
-import java.io.IOException;
-
+import java.io.*;
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import com.dao.impl.CustomerDaoImpl;
-import com.dao.impl.RoleDaoImpl;
-import com.model.Customer;
-import com.model.Role;
+import javax.servlet.http.*;
+import com.dao.impl.*;
+import com.model.*;
 
 public class AddCustomer extends HttpServlet{
 
-	/**
-	 * Jump to page of user permission list
-	 */
-	public void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {	
-		// Set character set of request to "UTF-8"
+	public void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException
+	{		
 		request.setCharacterEncoding("UTF-8");
-		
-		// Declare session
 		HttpSession session = null;
-		// Get session by using request
 		session = request.getSession();
+		//get user id
 		Integer userId = (Integer)session.getAttribute("userId");
 		CustomerDaoImpl customerdao=new CustomerDaoImpl();
-		// If user is not login, jump to login page
-		if (userId == null) {
+		// let the user login if he or she not login
+		if (userId == null) 
+		{
 			response.sendRedirect("toLogin");
-		}else {
+		}
+		else 
+		{
+			//get the customer's information from the jsp
 			Customer customer=new Customer();
 			customer.setAccout(request.getParameter("account"));
 			customer.setAddress(request.getParameter("address"));
@@ -48,12 +39,8 @@ public class AddCustomer extends HttpServlet{
 		}
 	}
 	
-	/**
-	 * Process GET requests
-	 */
-	public void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// Call doPost() to process request
+	public void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException 
+	{
 		this.doPost(request, response);
 	}
 
