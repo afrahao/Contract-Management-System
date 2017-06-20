@@ -1,47 +1,32 @@
 package com.web;
 
-import java.io.IOException;
-
+import java.io.*;
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 
-/**
- * Servlet for accessing administrator page
- */
+
 public class AdminFrameServlet extends HttpServlet {
 
-	/**
-	 * Jump to administrator page
-	 */
-	public void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// Set the request's character encoding
+	public void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException
+	{ 
 		request.setCharacterEncoding("UTF-8");
-		
-		// Declare session
 		HttpSession session = null;
-		// Get session by using request object
 		session = request.getSession();
-		Integer userId = (Integer)session.getAttribute("userId");
+		Integer myId = (Integer)session.getAttribute("userId");
 		
-		// If the user is not login, then jump to login page
-		if (userId == null) {
+		//let the user login anyway
+		if (myId == null)
+		{
 			response.sendRedirect("toLogin");
-		}else {
-			// Forwarded to contract administrator page
+		}
+		else 
+		{
 			request.getRequestDispatcher("/AdminFrame.jsp").forward(request, response);
 		}
 	}
 
-	/**
-	 * Process GET requests
-	 */
-	public void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// Call doPost() to process request
+	public void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException 
+	{
 		this.doPost(request, response);
 	}
 	
