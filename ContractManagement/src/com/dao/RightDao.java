@@ -5,55 +5,22 @@ import java.util.List;
 import com.model.Right;
 import com.utils.AppException;
 
-/**
- * Permission Data Access Layer Interface
- */
+
 public interface RightDao {
 
-	/**
-	 * Get roleId according to the userId
-	 * 
-	 * @param userId 
-	 * @return roleId 
-	 * @throws AppException
-	 */
+	//get role id by user if
 	public int getRoleIdByUserId(int userId) throws AppException;
 	
-	/**
-	 * Query user id set according to role id
-	 * 
-	 * @param roleId Role id
-	 * @return User id set that meet the conditions; otherwise return null
-	 * @throws AppException
-	 */
+	//get user id by role id
 	public List<Integer> getUserIdsByRoleId(int roleId) throws AppException;
 	
-	/**
-	 * Get permission id according to user id
-	 * 
-	 * @param userId User id
-	 * @return id Permission id
-	 * @throws AppException
-	 */
+	//get permission id by user id
 	public int getIdByUserId(int userId) throws AppException;
 	
-	/**
-	 * Update contract content according to permission id,
-	 * pass parameter though entity object
-	 * 
-	 * @param id permission id
-	 * @return boolean Return true if successful , otherwise false
-	 * @throws AppException
-	 */
+	//Update contract content according to permission id,pass parameter though entity object
 	public boolean updateById(Right right) throws AppException;
 	
-	/**
-	 * Save permission information
-	 * 
-	 * @param right permission object
-	 * @return Return true if successful , otherwise false
-	 * @throws AppException
-	 */
+	//add right
 	public boolean add(Right right) throws AppException;
 	
 }
