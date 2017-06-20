@@ -62,12 +62,8 @@ public class RegisterServlet extends HttpServlet {
 		}
 	}
 
-	/**
-	 * Process the GET requests
-	 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// Call doPost() to process request
 		this.doPost(request, response);
 	}
 }
