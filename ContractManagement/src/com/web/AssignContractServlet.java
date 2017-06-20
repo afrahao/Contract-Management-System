@@ -1,109 +1,77 @@
 package com.web;
 
-import java.io.IOException;
+import java.io.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+import com.model.*;
+import com.service.*;
+import com.utils.*;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-<<<<<<< HEAD
-import com.model.ConProcess;
-=======
->>>>>>> origin/LiWenjie
-import com.service.ContractService;
-import com.utils.AppException;
-import com.utils.Constant;
-
-/**
- * Servlet for assigning contract
- */
 public class AssignContractServlet extends HttpServlet {
 
-	/**
-	 * Process result of assign contrct
-	 */
-	public void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// Set the request's character encoding
+	public void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException 
+	{
 		request.setCharacterEncoding("UTF-8");
-		
-		// Declare session
 		HttpSession session = null;
-		// Get session by using request
 		session = request.getSession();
 		Integer userId = (Integer)session.getAttribute("userId");
 		
-		// If user is not login, jump to login page
-		if (userId == null) {
+		//let the user login if he or she not login
+		if (userId == null)
+		{
 			response.sendRedirect("toLogin");
 		}
 		
-		/*
-		 * Get information of assign contract
-		 */ 
-		//Get Contract id
+		//the contract id
 		int conId = Integer.parseInt(request.getParameter("conId"));
-		// Get assigned cuntersign people's id 
+		//user id that coungtersign this contract
 		String[] hqht = request.getParameterValues("hqht");
-		// Get assigned approver's id
+		//user id that approve this contract
 		String[] spht = request.getParameterValues("spht");
-		// Get assigned signer's id
+		//user id that sign this contract
 		String[] qdht = request.getParameterValues("qdht");
-<<<<<<< HEAD
 		
 		ConProcess conProcess = new ConProcess();
 		conProcess.setConId(conId);
 		conProcess.setUserId(userId);
 		conProcess.setContent(null);
-		
-		
-		conProcess.setState(Constant.DONE);
-=======
->>>>>>> origin/LiWenjie
 
-		try {
-			//  Initialize contractService
+		conProcess.setState(Constant.DONE);
+
+		try 
+		{
 			ContractService contractService = new ContractService();
-			/*
-			 * Call business logic layer to distributed contract
-			 */ 
-			// Assigned cuntersign people
-			for (String hq : hqht) {
+			
+			//countersigner
+			for (String hq : hqht)
+			{
 				contractService.distribute(conId, Integer.parseInt(hq),Constant.PROCESS_CSIGN);
 			}
-			
-			// Assigned approver
-			for (String sp : spht) {
+			//approver
+			for (String sp : spht)
+			{
 				contractService.distribute(conId, Integer.parseInt(sp), Constant.PROCESS_APPROVE);
 			}
-			
-			// Assigned signer
-			for (String qd : qdht) {
+			//signer
+			for (String qd : qdht)
+			{
 				contractService.distribute(conId, Integer.parseInt(qd), Constant.PROCESS_SIGN);
 			}
 		
-<<<<<<< HEAD
 			contractService.distribute(conId, Integer.parseInt(userId.toString()), Constant.PROCESS_ASSIGN);
 			contractService.assign(conProcess);
-=======
->>>>>>> origin/LiWenjie
-			// After complete assignment,redirect to page of to be distributed
 			response.sendRedirect("assignContractList");
-		} catch (AppException e) {
+		} catch (AppException e)
+		{
 			e.printStackTrace();
-			// Redirect to exception page
 			response.sendRedirect("toError");
 		}
 	}
 
-	/**
-	 * Process GET requests
-	 */
-	public void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// Call doPost() to process request
+	
+	public void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException 
+	{
 		this.doPost(request, response);
 	}
 
