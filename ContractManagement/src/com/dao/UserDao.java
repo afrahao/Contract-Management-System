@@ -5,92 +5,30 @@ import java.util.List;
 import com.model.User;
 import com.utils.AppException;
 
-/**
- * User Data Access Layer Interface
- */
+
 public interface UserDao {
 	
-	/**
-	 * Verify whether exist user that  has the same name 
-	 * 
-	 * @param name  User name
-<<<<<<< HEAD
-	 * @return Return true if exist user that  has the same name ，otherwise false
-	 * @throws AppException
-	 */
+	//judge if there if the user
 	public boolean isExist(String name) throws AppException;
+	//judge if there if the user
 	public boolean isExist(int id) throws AppException;
-=======
-	 * @return Return true if exist user that  has the same name 锛宱therwise false
-	 * @throws AppException
-	 */
-	public boolean isExist(String name) throws AppException;
->>>>>>> origin/LiWenjie
-	
-	/**
-	 * Save user's information
-	 * 
-	 * @param user User object
-	 * @return Return true if save successfully, otherwise false
-	 * @throws AppException
-	 */
+	//add user
 	public boolean add(User user) throws AppException;
-	
-<<<<<<< HEAD
+	//delete user
 	public boolean delete(int id) throws AppException;
-	
-=======
->>>>>>> origin/LiWenjie
-	/**
-	 * Query  UserId according to user name and password
-	 * @param name User name
-	 * @param password 
-	 * @throws AppException
-<<<<<<< HEAD
-	 */
+	//login
 	public int login(String name,String password) throws AppException;
-	
-	/**
-	 * Query user's information according to id
-	 * 
-	 * @param id  User id
-	 * @return User 
-	 * @throws AppException
-	 */
+	//get user
 	public User getById(int id) throws AppException;
-	
-	/**
-	 * Query user id set
-	 * 
-	 * @return User id set
-	 * @throws AppException
-	 */
-	public List<Integer> getIds() throws AppException;
-	
+	//get contract id
+	public List<Integer> getIds() throws AppException;	
+	//modify password
 	public boolean modify(int id, String password) throws AppException;
+	//judge if there is the user
 	public boolean isExistUser(String name) throws AppException;
+	//judge if the password user enter is correct
 	public boolean isSame(String name, String oPassword) throws AppException;
+	//change the password
 	public boolean ChangePassword(String name, String nPassword) throws AppException;
-=======
-	 */
-	public int login(String name,String password) throws AppException;
-	
-	/**
-	 * Query user's information according to id
-	 * 
-	 * @param id  User id
-	 * @return User 
-	 * @throws AppException
-	 */
-	public User getById(int id) throws AppException;
-	
-	/**
-	 * Query user id set
-	 * 
-	 * @return User id set
-	 * @throws AppException
-	 */
-	public List<Integer> getIds() throws AppException;
->>>>>>> origin/LiWenjie
 	
 }
