@@ -1,92 +1,74 @@
 package com.web;
 
-import java.io.IOException;
+import java.io.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+import com.model.*;
+import com.service.*;
+import com.utils.*;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
-import com.model.User;
-import com.service.UserService;
-import com.utils.AppException;
-
-/**
- * Servlet for registration
- */
 public class ChangePasswordServlet extends HttpServlet {
 
-	/**
-	 * Process the register request
-	 */
-	public void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		//Set the request's character encoding
+	public void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException
+	{
 		request.setCharacterEncoding("UTF-8");
-		// Get registration information 
+		// get the user name, old password and new password
 		String name = request.getParameter("name");
 		String oPassword = request.getParameter("password");
 		String nPassword = request.getParameter("password2");
 
-		// Declare operation flag
-		boolean flag = false;
-		boolean flag1 = false;
-		boolean flag2 = false;
-		// Initialize the prompt message 
+		//if there is the user
+		boolean isUser = false;
+		//is the old password is the same as the user entered
+		boolean isPassword = false;
+		//if change the password successfully
+		boolean isChange = false;
 		String message = "";
-		/*
-		 * Call methods in business logic layer to process business logic 
-		 */
+		
 		try {
-			// Initialize the user business logic class
 			UserService userService = new UserService();
 			
-			if(flag1 = userService.IsExist(name))
+			if(isUser = userService.IsExist(name))
 			{
-				if(flag2 = userService.IsSame(name,oPassword))
+				if(isPassword = userService.IsSame(name,oPassword))
 				{
-					flag = userService.ChangePassword(name,nPassword);
+					isChange = userService.ChangePassword(name,nPassword);
 				}
 			}
-			if (flag && flag1 && flag2) { // Registration Successful
-				// After registration Successful, redirect to the login page
+			//change password successfully
+			if (isUser && isPassword && isChange) {
 				response.sendRedirect("toLogin");
 			}
 			else 
 			{
-				if(!flag)
-				{ // Registration failed
-				// Set prompt message
+				//set the reminding message
+				if(!isChange)
+				{
 					message = "Change failed";
 				}
-				else if(!flag2)
+				else if(!isPassword)
 				{
-					// Set prompt message
 					message = "The original password is not corret!";
 				}
-				else if(!flag1)
+				else if(!isUser)
 				{
-					// Set prompt message
 					message = "There is no such a user";
 				}
-				request.setAttribute("message", message); // Save prompt message into request 
-				// Forward to the registration page
-				request.getRequestDispatcher("/ChangeUser.jsp").forward(request,
-						response);
+				request.setAttribute("message", message);
+				request.getRequestDispatcher("/ChangeUser.jsp").forward(request,response);
 			}
-		} catch (AppException e) {
+		}
+		catch (AppException e) 
+		{
 			e.printStackTrace();
-			// Redirect to the exception page
 			response.sendRedirect("toError");
 		}
 	}
 
-	/**
-	 * Process the GET requests
-	 */
-	public void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// Call doPost() to process request
+
+	public void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException 
+	{
 		this.doPost(request, response);
 	}
 }
