@@ -1,8 +1,10 @@
 package com.service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+import com.dao.impl.*;
 import com.dao.RightDao;
 import com.dao.RoleDao;
 import com.dao.UserDao;
@@ -23,6 +25,7 @@ public class UserService {
 	private UserDao userDao = null;//  Define a userDao interface object
 	private RoleDao roleDao = null;// Define a roleDao interface object
 	private RightDao rightDao = null;// Define a userDao rightDao object
+	private LogManagementDaoImpl logDao = null;
 
 	/**
 	 * No-arg constructor method is used to initialize instance in data access layer
@@ -31,6 +34,7 @@ public class UserService {
 		userDao = new UserDaoImpl();
 		roleDao = new RoleDaoImpl();
 		rightDao = new RightDaoImpl();
+		logDao = new LogManagementDaoImpl();
 	}
 
 	/**
@@ -44,6 +48,7 @@ public class UserService {
 		try {
 			if (!userDao.isExist(user.getName())) {// Execute save operation when the user does not exist
 				flag = userDao.add(user);// Return the operation result back to flag
+				logDao.writeLog("register "+user.getName(), user.getId(), new Date());
 			}
 		} catch (AppException e) {
 			e.printStackTrace();
@@ -52,12 +57,12 @@ public class UserService {
 		return flag;
 	}
 	
-<<<<<<< HEAD
 	public boolean DeleteUser(int id) throws AppException {
 		boolean flag = false;//  Define flag 
 		try {
 			if (userDao.isExist(id)) {// Execute save operation when the user does not exist
 				flag = userDao.delete(id);// Return the operation result back to flag
+				logDao.writeLog("delete "+ userDao.getById(id).getName(), id, new Date());
 			}
 		} catch (AppException e) {
 			e.printStackTrace();
@@ -66,8 +71,6 @@ public class UserService {
 		return flag;
 	}
 	
-=======
->>>>>>> origin/LiWenjie
 	/**
 	 * User login
 	 * 
@@ -156,7 +159,7 @@ public class UserService {
 	 * @return permissionList  User permission list
 	 * @throws AppException
 	 */
-	public List<PermissionBusiModel> getYhqxList() throws AppException {
+	public List<PermissionBusiModel> getPermissionList() throws AppException {
 		// Initialize permissionList
 		List<PermissionBusiModel> permissionList = new ArrayList<PermissionBusiModel>();
 		// Declare userIds
@@ -268,7 +271,6 @@ public class UserService {
 		return flag;
 	}
 
-<<<<<<< HEAD
 	public boolean ModifyPassword(int id, String password) throws AppException {
 		boolean flag = false;//  Define flag 
 		try {
@@ -315,6 +317,4 @@ public class UserService {
 		return flag;
 	}
 
-=======
->>>>>>> origin/LiWenjie
 }
