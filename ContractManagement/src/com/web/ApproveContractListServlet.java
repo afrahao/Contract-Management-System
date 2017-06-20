@@ -1,68 +1,50 @@
 package com.web;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
+import java.io.*;
+import java.util.*;
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
+import com.model.*;
+import com.service.*;
+import com.utils.*;
 
-import com.model.ConBusiModel;
-import com.service.ContractService;
-import com.utils.AppException;
-
-/**
- * Access page of contract to be approved
- */
 public class ApproveContractListServlet extends HttpServlet{
 
-	/**
-	 * Jump to page of contract to be approved
-	 */
-	public void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {	
-		// Set the request's character encoding
+	public void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException
+	{	
 		request.setCharacterEncoding("UTF-8");
-		
-		// Declare session
 		HttpSession session = null;
-		// Get session by using request
 		session = request.getSession();
-		Integer userId = (Integer)session.getAttribute("userId");
+		//get user id
+		Integer myId = (Integer)session.getAttribute("userId");
 		
-		// If user is not login, jump to login page
-		if (userId == null) {
+		// let the user login
+		if (myId == null) 
+		{
 			response.sendRedirect("toLogin");
-		}else {
+		}
+		else
+		{
 			
 			try {
-				// Initialize contractService
 				ContractService contractService = new ContractService();
-				// Initialize contractList
 				List<ConBusiModel> contractList = new ArrayList<ConBusiModel>();
-				// Call business logic layer to get list of contract to be approved
-				contractList = contractService.getDshphtList(userId);
-				// Save contractList to request
+				//get the contract to be approved
+				contractList = contractService.getApproveList(myId);
+				//send the approve list to the jsp
 				request.setAttribute("contractList", contractList);
-				// Forward to page of contract to be approved
 				request.getRequestDispatcher("/ApproveContractList.jsp").forward(request, response);
-			} catch (AppException e) {
+			}
+			catch (AppException e)
+			{
 				e.printStackTrace();
-				//Redirect to the exception page
 				response.sendRedirect("toError");
 			}
 		}
 	}
 	
-	/**
-	 * Process GET requests
-	 */
-	public void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// Call doPost() to process request
+	public void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException 
+	{
 		this.doPost(request, response);
 	}
 
