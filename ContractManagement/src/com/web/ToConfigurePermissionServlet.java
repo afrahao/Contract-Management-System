@@ -1,72 +1,61 @@
 package com.web;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.*;
+import java.util.*;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.*;
+import javax.servlet.http.*;
 
-import com.model.PermissionBusiModel;
-import com.model.Role;
-import com.service.UserService;
-import com.utils.AppException;
+import com.model.*;
+import com.service.*;
+import com.utils.*;
 
-/**
- * Servlet for accessing permission configuration page
- */
 public class ToConfigurePermissionServlet extends HttpServlet {
 
-	/**
-	 * Jump to permission configuration page
-	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// Set character set of request to "UTF-8"
 		request.setCharacterEncoding("UTF-8");
-		
-		// Declare session
 		HttpSession session = null;
-		// Get session by using request object
 		session = request.getSession();
+		//get user id
 		Integer userId = (Integer)session.getAttribute("userId");
 		
-		// If the user is not login, then jump to login page
-		if (userId == null) {
+		//let user login if it didn't
+		if (userId == null) 
+		{
 			response.sendRedirect("toLogin");
-		} else {
+		}
+		else
+		{
 
-			// Get user id, user name and role id to configure permission
+			//get user id,name and current role
 			int uId = Integer.parseInt(request.getParameter("userId"));
 			String userName = (String)request.getParameter("uName");
 			int roleId = Integer.parseInt(request.getParameter("roleId"));
-			// Save user permission information to permission business entity object
-			// Initialize permission business entity class
+			
+			//create a permission business
 			PermissionBusiModel permission = new PermissionBusiModel();
 			permission.setUserId(uId);
 			permission.setUserName(userName);
 			permission.setRoleId(roleId);
 			
-			// Save permission to request
+			// send permission to jsp
 			request.setAttribute("permission", permission);
 			
-			try {
-				// nitialize userService
+			try 
+			{
 				UserService userService = new UserService();
-				// Initialize roleList
 				List<Role> roleList = new ArrayList<Role>();
-				// Call business logic layer to get all role list
+				//get the exist role list
 				roleList = userService.getRoleList();
 
-				// Save roleList to request
+				// Send roleList to jsp
 				request.setAttribute("roleList", roleList);
-				// Forward to permission configuration page
-				request.getRequestDispatcher("/ConfigurePermission.jsp").forward(
-						request, response);
-			} catch (AppException e) {
+				// turm to page permission configuration
+				request.getRequestDispatcher("/ConfigurePermission.jsp").forward(request, response);
+			} 
+			catch (AppException e)
+			{
 				e.printStackTrace();
 				// Redirect to the exception page
 				response.sendRedirect("toError");
@@ -74,12 +63,8 @@ public class ToConfigurePermissionServlet extends HttpServlet {
 		}
 	}
 
-	/**
-	 * Process GET requests
-	 */
-	public void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// Call doPost() to process request
+	public void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException
+	{
 		this.doPost(request, response);
 	}
 }
