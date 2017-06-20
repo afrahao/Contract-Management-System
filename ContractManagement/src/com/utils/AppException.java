@@ -1,4 +1,4 @@
-package com.ruanko.utils;
+package com.utils;
 
 /**
  *	User-defined exception class

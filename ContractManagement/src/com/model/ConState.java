@@ -1,4 +1,4 @@
-package com.ruanko.model;
+package com.model;
 
 import java.util.Date;
 
@@ -67,4 +67,19 @@ public class ConState {
 	public void setDel(int del) {
 		this.del = del;
 	}
+<<<<<<< HEAD
+=======
+	public String getState(int type){
+		if(type==1)
+			return "draft";
+		else if(type==2)
+			return "countersigned";
+		else if(type==3)
+			return "finalized";
+		else if(type==4)
+			return "approved";
+		else
+			return "signed";
+	}
+>>>>>>> origin/LiWenjie
 }

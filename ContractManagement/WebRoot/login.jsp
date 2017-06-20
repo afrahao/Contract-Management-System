@@ -36,6 +36,7 @@
 	<body>
 		<!-- main start -->
 		<div class="main">
+			<a href="index">Comeback</a>
 			<form action="login" method="post">
 
 				<div class="register_main">
@@ -85,12 +86,19 @@
 						</tr>
 						<tr>
 							<td colspan="3">
+							
 								<input type="submit" value="Login" class="button" onclick="return check()"/>
 							</td>
 						</tr>
 					</table>
+<<<<<<< HEAD
+					<a href="toChangePassword">Change Password</a>
 				</div>
-
+=======
+					
+				</div>
+					
+>>>>>>> origin/LiWenjie
 			</form>
 		</div>
 		<!-- main end -->

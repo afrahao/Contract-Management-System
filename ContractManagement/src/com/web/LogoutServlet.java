@@ -1,4 +1,4 @@
-package com.ruanko.web;
+package com.web;
 
 import java.io.IOException;
 
@@ -26,7 +26,11 @@ public class LogoutServlet extends HttpServlet{
 		session.removeAttribute("userId");
 		session.removeAttribute("userName");
 		// Redirect to login page
+<<<<<<< HEAD
+		response.sendRedirect("index");
+=======
 		response.sendRedirect("toLogin");
+>>>>>>> origin/LiWenjie
 	}
 
 	/**

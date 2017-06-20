@@ -1,4 +1,4 @@
-package com.ruanko.model;
+package com.model;
 
 /**
  * Permissions entity class

@@ -1,4 +1,4 @@
-package com.ruanko.model;
+package com.model;
 
 /**
  * Role entity class

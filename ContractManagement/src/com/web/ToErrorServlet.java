@@ -1,4 +1,4 @@
-package com.ruanko.web;
+package com.web;
 
 import java.io.IOException;
 
