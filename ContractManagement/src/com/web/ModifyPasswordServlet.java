@@ -1,66 +1,44 @@
 package com.web;
 
-import java.io.IOException;
+import java.io.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+import com.service.*;
+import com.utils.*;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import com.model.Role;
-import com.model.User;
-import com.service.UserService;
-import com.utils.AppException;
-
-/**
- * Login Servlet
- */
 public class ModifyPasswordServlet extends HttpServlet {
 
-	/**
-	 *  Process the POST login request
-	 */
-	public void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// Set request's character encoding
+	public void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException 
+	{
 		request.setCharacterEncoding("UTF-8");
-		//  Get login information
-	
+		//get user id and password
 		int id = Integer.parseInt(request.getParameter("id"));
 		String password = request.getParameter("password");
 		String message = "";
-		
-
-		// Initialize the user business logic class
 		UserService userService = new UserService();
-		// Call business logic layer for user login
+		//let the user login if not
 		try {
+			//modify password
 			if(userService.ModifyPassword(id, password))
 			{
 				response.sendRedirect("modifyUser");
 			}
+			//modify failed
 			else 
-			{// Login failed
-				// Set prompt message
+			{
 				message = "Modify failed!";
-				request.setAttribute("message", message); // Save prompt message into request
-				// Save user name into request
+				request.setAttribute("message", message);
+				//sent message and turn to jsp
 				request.getRequestDispatcher("/ModifyPassword.jsp").forward(request,
 						response);
 			}
 		} catch (AppException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
-	/**
-	 * Process GET requests
-	 */
-	public void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// Call doPost() to process request
+	public void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException
+	{
 		this.doPost(request, response);
 	}
 }
