@@ -1,89 +1,67 @@
 package com.web;
 
-import java.io.IOException;
+import java.io.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+import com.model.*;
+import com.service.*;
+import com.utils.*;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import com.model.ConProcess;
-import com.service.ContractService;
-import com.utils.AppException;
-import com.utils.Constant;
-
-/**
- * Servlet for approve contract
- */
 public class ApproveContractServlet extends HttpServlet {
 
-	/**
-	 * Process Post requests of approving contract
-	 */
-	public void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// Set the request's character encoding
+	public void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException 
+	{
 		request.setCharacterEncoding("UTF-8");
-
-		// Declare session
 		HttpSession session = null;
-		//  Get session by using request
 		session = request.getSession();
 		Integer userId = (Integer) session.getAttribute("userId");
 
-		// If user is not login, jump to login page
-		if (userId == null) {
+		//let the user login if not login
+		if (userId == null)
+		{
 			response.sendRedirect("toLogin");
-		} else {
+		}
+		else
+		{
 
-			//  Get contract id
-			int conId = Integer.parseInt(request.getParameter("conId"));
-			// Get approval opinion
+			//get contract id and content and operation
+			String conId = request.getParameter("conId");
 			String content = request.getParameter("content");
-			// Get approval operation
 			String approve = request.getParameter("approve");
 
-			// Instantiation conProcess object to encapsulate approval information 
+			//create a contract process
 			ConProcess conProcess = new ConProcess();
-			conProcess.setConId(conId);
+			conProcess.setConId(Integer.parseInt(conId));
 			conProcess.setUserId(userId);
 			conProcess.setContent(content);
 			
-			// Set value to state of approve type according to approving operation
-			if (approve.equals("true")) { // Approve type is "pass"
-				// Set "PROCESS_APPROVE" type corresponding state to "DONE"
+			//if the user pass the contract
+			if (approve.equals("true")) {
 				conProcess.setState(Constant.DONE);
-			} else { //  Approve type is "refuse"
-				// Set "PROCESS_APPROVE" type corresponding state to "VETOED"
+			}
+			//if the user refuse the contract
+			else 
+			{
 				conProcess.setState(Constant.VETOED);
 			}
 
-			/*
-			 * Call business logic layer corresponding method to process business logic
-			 */
-			try {
-				//  Initialize contractService
+			try 
+			{
 				ContractService contractService = new ContractService();
-				// Call business logic layer to approve contract
 				contractService.approve(conProcess);
-
-				// After approved contract,redirect to page of contract to be approved
+				//show the approve contract list to the jsp
 				response.sendRedirect("approveContractList");
-			} catch (AppException e) {
+			} catch (AppException e)
+			{
 				e.printStackTrace();
-				// Redirect to the exception page
 				response.sendRedirect("toError");
 			}
 		}
 	}
 
-	/**
-	 * Process GET requests
-	 */
-	public void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// Call doPost() to process request
+	public void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException 
+	{
 		this.doPost(request, response);
 	}
 }
