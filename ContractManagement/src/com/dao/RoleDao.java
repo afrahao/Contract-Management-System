@@ -5,26 +5,13 @@ import java.util.List;
 import com.model.Role;
 import com.utils.AppException;
 
-/**
- * Role Data Access Layer Interface
- */
+
 public interface RoleDao {
 
-	/**
-	 * Query role's information according to id
-	 * 
-	 * @param id RoleId
-	 * @return Role 
-	 * @throws AppException
-	 */
+	//get role
 	public Role getById(int id) throws AppException;
 	
-	/**
-	 * Query all role object set
-	 * 
-	 * @return Role object set
-	 * @throws AppException
-	 */
+	//get all role
 	public List<Role> getAll() throws AppException;
 	
 }
