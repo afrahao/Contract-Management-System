@@ -1,72 +1,54 @@
 package com.web;
 
-import java.io.IOException;
+import java.io.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+import com.service.*;
+import com.utils.*;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import com.model.ConProcess;
-import com.service.ContractService;
-import com.service.UserService;
-import com.utils.AppException;
-import com.utils.Constant;
-
-/**
- * Servlet for assigning contract
- */
 public class DeleteUserServlet extends HttpServlet {
 
-	/**
-	 * Process result of assign contrct
-	 */
-	public void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// Set the request's character encoding
+	public void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException
+	{
 		request.setCharacterEncoding("UTF-8");
-		
-		// Declare session
 		HttpSession session = null;
-		// Get session by using request
 		session = request.getSession();
+		//get user id
 		Integer userId = (Integer)session.getAttribute("userId");
 		
-		// If user is not login, jump to login page
-		if (userId == null) {
+		// let user login if not
+		if (userId == null) 
+		{
 			response.sendRedirect("toLogin");
 		}
-		
-		
-		String[] hqht = request.getParameterValues("choosenUser");
+		else
+		{
+			//get the chosen user
+			String[] chosenUser = request.getParameterValues("choosenUser");
 
-		try {
-			//  Initialize contractService
-			UserService userService = new UserService();
-			/*
-			 * Call business logic layer to distributed contract
-			 */ 
-			// Assigned cuntersign people
-			for (String hq : hqht) {
-				userService.DeleteUser(Integer.parseInt(hq.toString()));
+			try
+			{
+				UserService userService = new UserService();
+				
+				//get the delete user
+				for (String chosen : chosenUser)
+				{
+					//delete users
+					userService.DeleteUser(Integer.parseInt(chosen.toString()));
+				}
+				//turn to jsp
+				request.getRequestDispatcher("/toDeleteUser").forward(request,response);
 			}
-		
-			request.getRequestDispatcher("/toDeleteUser").forward(request,
-					response);
-		} catch (AppException e) {
-			e.printStackTrace();
-			// Redirect to exception page
-			response.sendRedirect("toError");
+			catch (AppException e)
+			{
+				e.printStackTrace();
+				response.sendRedirect("toError");
+			}
 		}
 	}
 
-	/**
-	 * Process GET requests
-	 */
-	public void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// Call doPost() to process request
+	public void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException 
+	{
 		this.doPost(request, response);
 	}
 
