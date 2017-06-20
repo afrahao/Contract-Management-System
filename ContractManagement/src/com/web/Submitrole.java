@@ -1,51 +1,42 @@
 package com.web;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.*;
+import java.text.*;
+import java.util.*;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.*;
+import javax.servlet.http.*;
 
 import com.dao.impl.RoleDaoImpl;
-import com.model.PermissionBusiModel;
-import com.model.Role;
-import com.service.UserService;
-import com.utils.AppException;
+import com.model.*;
+import com.service.*;
+import com.utils.*;
 
-/**
- * Access page of user permission list
- */
 public class Submitrole extends HttpServlet{
 
-	/**
-	 * Jump to page of user permission list
-	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {	
-		// Set character set of request to "UTF-8"
 		request.setCharacterEncoding("UTF-8");
-		
-		// Declare session
 		HttpSession session = null;
-		// Get session by using request
 		session = request.getSession();
+		//get user id
 		Integer userId = (Integer)session.getAttribute("userId");
 		
-		// If user is not login, jump to login page
-		if (userId == null) {
+		// let user login if it not login
+		if (userId == null) 
+		{
 			response.sendRedirect("toLogin");
-		}else {
+		}
+		else
+		{
 			
-			// Forward to permission configuration page
+			// get right of the role
 			String[] privlege=request.getParameterValues("check");
 			String function;
 			String[] cont=request.getParameterValues("content");
 			String content="";
 			function=privlege[0];
+			//set the right of the role
 			for(int i=1;i<privlege.length;i++)
 			{
 				function=function+","+privlege[i];
@@ -55,19 +46,17 @@ public class Submitrole extends HttpServlet{
 				content=content+cont[i];
 			}
 			RoleDaoImpl roledao=new RoleDaoImpl();
+			//get role is
 			int roleId =Integer.parseInt(request.getParameter("roleId"));
+			//modify the role's right
 			roledao.modifyDes(content,roleId);
 			roledao.modifyFun(function, roleId);
 			response.sendRedirect("roleList");
 		}
 	}
 	
-	/**
-	 * Process GET requests
-	 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// Call doPost() to process request
 		this.doPost(request, response);
 	}
 }
