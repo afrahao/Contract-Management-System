@@ -1,0 +1,362 @@
+drop database if exists contractdb;
+
+	
+
+
+
+	create database contractdb;
+
+	
+
+	use contractdb;
+
+	
+
+	
+
+	create table t_customer
+
+	(
+
+	   id                   int not null primary key auto_increment, -- Auto-increase ID, a unique identifier, primary key
+
+	   num                  varchar(20) not null, -- customer number
+
+	   name                 varchar(40) not null, -- customer name
+
+	   address              varchar(200) not null,-- customer address
+
+	   tel                  varchar(20) not null,-- customer phone
+
+	   fax                  varchar(20),-- customer fax
+
+	   code                 varchar(10),-- customer postcode
+
+	   bank                 varchar(50),-- bank name
+
+	   account              varchar(50),-- bank account
+
+	   del                  int not null default 0 -- Delete mark: 0-Not deleted,1-Deleted
+
+	);
+
+	
+
+
+	create table t_user
+
+	(
+
+	   id                   int not null primary key auto_increment, -- Auto-increase ID, a unique identifier, primary key
+
+	   name                 varchar(40) not null, -- user name
+
+	   password             varchar(20) not null,-- password
+
+	   del                  int not null default 0 -- Delete mark: 0-Not deleted,1-Deleted
+
+	);
+
+	
+
+
+
+	create table t_contract
+
+	(
+
+	   id                   int not null primary key auto_increment, -- Auto-increase ID, a unique identifier, primary key
+
+	   user_id              int,-- user id
+
+	   customer             varchar(40),-- customer
+
+	   num                  varchar(20) not null,-- contract number
+
+	   name                 varchar(40) not null, -- contract name
+
+	   beginTime            date not null,-- begin time
+
+	   endTime              date not null,-- end time
+
+	   content              text not null,-- contract content
+
+	   del                  int not null default 0 -- Delete mark: 0-Not deleted,1-Deleted
+
+	);
+
+	
+
+
+	create table t_contract_process
+
+	(
+
+	   id                   int not null primary key auto_increment, -- Auto-increase ID, a unique identifier, primary key
+
+	   con_id               int not null,-- contract ID, quote t_contract table
+
+	   user_id              int not null,-- user ID, quote t_user table
+
+	   type                 int not null,-- operation type: 1-Countersign, 2-Approve, 3-Sign
+
+	   state                int not null default 0,-- operation state: 1-Unfinished, 2-Completed, 3-Rejected
+
+	   content              text,-- operation content
+
+	   time                 timestamp  not null default CURRENT_TIMESTAMP,-- operation time
+
+	   del                  int not null default 0, -- Delete mark: 0-Not deleted,1-Deleted
+
+	   constraint FK_contract_process foreign key (con_id)
+
+	      references t_contract (id) on delete cascade,
+
+	   constraint FK_process_user foreign key (user_id)
+
+	      references t_user (id) on delete cascade 
+
+	);
+
+	
+
+
+
+	create table t_contract_state
+
+	(
+
+	   id                   int not null primary key auto_increment, -- Auto-increase ID, a unique identifier, primary key
+
+	   con_id               int not null,-- contract ID, quote t_contract table
+
+	   type                 int not null,-- operation type: 1-Draft, 2-Countersigned, 3-Finalized, 4-Approved, 5-Signed
+
+	   time                 timestamp not null default CURRENT_TIMESTAMP,-- operation time
+
+	   del                  int not null default 0, -- Delete mark: 0-Not deleted,1-Deleted
+
+	   constraint FK_belong foreign key (con_id)
+
+	      references t_contract (id) on delete cascade
+
+	);
+
+	
+
+
+
+	create table t_contract_attachment
+
+	(
+
+	   id                   int not null primary key auto_increment, -- Auto-increase ID, a unique identifier, primary key
+
+	   con_id               int not null,-- contract id
+
+	   fileName             varchar(40) not null, -- attachment name
+
+	   path                 varchar(100) not null,-- attachment path
+
+	   type                 varchar(10) not null,-- attachment type
+
+	   uploadTime           timestamp not null default CURRENT_TIMESTAMP,-- upload date
+
+	   del                  int not null default 0 -- Delete mark: 0-Not deleted,1-Deleted
+
+	);
+
+	
+
+	
+
+	create table t_function
+
+	(
+
+	   id                   int not null primary key auto_increment, -- Auto-increase ID, a unique identifier, primary key
+
+	   num                  varchar(10) not null,-- function number
+
+	   name                 varchar(40) not null,-- function name
+
+	   URL                  varchar(200),-- function path
+
+	   description          varchar(200),-- function description
+
+	   del                  int not null default 0 -- Delete mark: 0-Not deleted,1-Deleted
+
+	);
+
+	
+
+
+	create table t_role
+
+	(
+
+	   id                   int not null primary key auto_increment, -- Auto-increase ID, a unique identifier, primary key
+
+	   name                 varchar(40) not null,-- role name
+
+	   description          varchar(200),-- role description
+
+	   function_ids         varchar(500),-- function id combination
+
+	   del                  int not null default 0 -- Delete mark: 0-Not deleted,1-Deleted
+
+	);
+
+	
+
+
+	create table t_right
+
+	(
+
+	   id                   int not null primary key auto_increment, -- Auto-increase ID, a unique identifier, primary key
+
+	   user_id              int not null,-- user ID, quote t_user table
+
+	   role_id              int not null,-- role ID, quote t_role table
+
+	   description          varchar(200),-- right description
+
+	   del                  int not null default 0, -- Delete mark: 0-Not deleted,1-Deleted
+
+	   constraint FK_right_u foreign key (user_id)
+
+	      references t_user (id) on delete cascade,
+
+	   constraint FK_right_r foreign key (role_id)
+
+	      references t_role (id) on delete cascade
+
+	);
+
+	
+
+	create table t_log
+
+	(
+
+	   id                   int not null primary key auto_increment, -- Auto-increase ID, a unique identifier, primary key
+
+	   user_id              int not null,-- operator id
+
+	   time                 timestamp not null default CURRENT_TIMESTAMP,-- operation time
+
+	   content              text not null,-- log content
+
+	   del                  int not null default 0 -- Delete mark: 0-Not deleted,1-Deleted
+
+	);
+
+	INSERT INTO `t_customer` VALUES (1, 'Cus20131211182300001', 'HB company', 'hubei wuhan', '11111111111', '12121212', '430000', 'Bank Of China', '621661***', 0);
+
+	INSERT INTO `t_customer` VALUES (2, 'Cus20131211182300002', 'BJ company', 'beijing', '22222222', '34213467', '100000', 'Agricultural Bank of China', '622848***', 0);
+
+	INSERT INTO `t_customer` VALUES (3, 'Cus20131211182300003', 'Jack Wang', 'Shanghai', '14231116', '45678234', '200000', 'Industrial and Commercial Bank of China Limited', '530990***', 0);
+
+	
+
+
+	INSERT INTO `t_function` VALUES (1, '001', 'QCHT', null, null, 0);
+
+	INSERT INTO `t_function` VALUES (2, '002', 'DGHT', null, null, 0);
+
+	INSERT INTO `t_function` VALUES (3, '003', 'CXHT', null, null, 0);
+
+	INSERT INTO `t_function` VALUES (4, '004', 'SCHT', null, null, 0);
+
+	INSERT INTO `t_function` VALUES (5, '005', 'HQHT', null, null, 0);
+
+	INSERT INTO `t_function` VALUES (6, '006', 'SPHT', null, null, 0);
+
+	INSERT INTO `t_function` VALUES (7, '007', 'QDHT', null, null, 0);
+
+	INSERT INTO `t_function` VALUES (8, '008', 'FPHQ', null, null, 0);
+
+	INSERT INTO `t_function` VALUES (9, '009', 'FPSP', null, null, 0);
+
+	INSERT INTO `t_function` VALUES (10, '010', 'FPQD', null, null, 0);
+
+	INSERT INTO `t_function` VALUES (11, '011', 'LCCX', null, null, 0);
+
+	INSERT INTO `t_function` VALUES (12, '012', 'XZYH', null, null, 0);
+
+	INSERT INTO `t_function` VALUES (13, '013', 'BJYH', null, null, 0);
+
+	INSERT INTO `t_function` VALUES (14, '014', 'CXYH', null, null, 0);
+
+	INSERT INTO `t_function` VALUES (15, '015', 'SCYH', null, null, 0);
+
+	INSERT INTO `t_function` VALUES (16, '016', 'XZJS', null, null, 0);
+
+	INSERT INTO `t_function` VALUES (17, '017', 'BJJS', null, null, 0);
+
+	INSERT INTO `t_function` VALUES (18, '018', 'CXJS', null, null, 0);
+
+	INSERT INTO `t_function` VALUES (19, '019', 'SCJS', null, null, 0);
+
+	INSERT INTO `t_function` VALUES (20, '020', 'XZGN', null, null, 0);
+
+	INSERT INTO `t_function` VALUES (21, '021', 'BJGN', null, null, 0);
+
+	INSERT INTO `t_function` VALUES (22, '022', 'CXGN', null, null, 0);
+
+	INSERT INTO `t_function` VALUES (23, '023', 'SCGN', null, null, 0);
+
+	INSERT INTO `t_function` VALUES (24, '024', 'PZQX', null, null, 0);
+
+	INSERT INTO `t_function` VALUES (25, '025', 'XZKH', null, null, 0);
+
+	INSERT INTO `t_function` VALUES (26, '026', 'BJKH', null, null, 0);
+
+	INSERT INTO `t_function` VALUES (27, '027', 'CXKH', null, null, 0);
+
+	INSERT INTO `t_function` VALUES (28, '028', 'SCKH', null, null, 0);
+
+	INSERT INTO `t_function` VALUES (29, '029', 'CXRZ', null, null, 0);
+
+	INSERT INTO `t_function` VALUES (30, '030', 'SCRZ', null, null, 0);
+
+	
+
+	
+
+
+
+	INSERT INTO `t_role` VALUES (1, 'admin', 'To implement the system management and contract management', '003,004,008,009,010,011,012,013,014,015,016,017,018,019,020,021,022,023,024,025,026,027,028,029,030', 0);
+
+	INSERT INTO `t_role` VALUES (2, 'operator', 'operate contract', '001,002,003,005,006,007,011,027', 0);
+
+	
+
+	
+
+	INSERT INTO `t_user` VALUES (1, 'admin', '123456', 0);
+
+	INSERT INTO `t_user` VALUES (2, 'thomas', '123456', 0);
+
+	INSERT INTO `t_user` VALUES (3, 'lucy', '123456', 0);
+
+	INSERT INTO `t_user` VALUES (4, 'lily', '123456', 0);
+
+	INSERT INTO `t_user` VALUES (5, 'jack', '123456', 0);
+
+	INSERT INTO `t_user` VALUES (6, 'sanri', '123456', 0);
+
+	
+
+	
+
+	INSERT INTO `t_right` VALUES (1, 1, 1, 'admin', 0);
+
+	INSERT INTO `t_right` VALUES (2, 2, 2, 'operator', 0);
+
+	INSERT INTO `t_right` VALUES (3, 3, 2, 'operator', 0);
+
+	INSERT INTO `t_right` VALUES (4, 4, 2, 'operator', 0);
+
+	INSERT INTO `t_right` VALUES (5, 5, 2, 'operator', 0);
