@@ -1,68 +1,52 @@
 package com.web;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.*;
+import java.util.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+import com.model.*;
+import com.service.*;
+import com.utils.*;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import com.model.ConBusiModel;
-import com.service.ContractService;
-import com.utils.AppException;
-
-/**
- * Access page of contract to be signed
- */
 public class SignedContractServlet extends HttpServlet{
 
-	/**
-	 *Jump to page of contract to be signed
-	 */
-	public void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {	
-		// Set the request's character encoding
+	public void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException 
+	{	
 		request.setCharacterEncoding("UTF-8");
-		
-		// Declare session
 		HttpSession session = null;
-		//  Get session by using request
 		session = request.getSession();
+		//get user id
 		Integer userId = (Integer)session.getAttribute("userId");
 		
-		// If user is not login, jump to login page
-		if (userId == null) {
+		//let user login if not login
+		if (userId == null)
+		{
 			response.sendRedirect("toLogin");
-		}else {
+		}
+		else
+		{
 			
-			try {
-				//Initialize contractService
+			try
+			{
 				ContractService contractService = new ContractService();
-				// Initialize contractList
 				List<ConBusiModel> contractList = new ArrayList<ConBusiModel>();
-				// Call business logic layer to get list of contract to be signed
+				//get signed contract
 				contractList = contractService.getSignedContract(userId);
-				// Save contractList to request
+				//send signed contract list to jsp
 				request.setAttribute("contractList", contractList);
-				// Forward to contract to be signed page
+				// turn to jsp
 				request.getRequestDispatcher("/SignedContract.jsp").forward(request, response);
-			} catch (AppException e) {
+			} 
+			catch (AppException e)
+			{
 				e.printStackTrace();
-				// Redirect to the exception page
 				response.sendRedirect("toError");
 			}
 		}
 	}
 	
-	/**
-	 * Process GET requests
-	 */
-	public void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// Call doPost() to process request
+	public void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException 
+	{
 		this.doPost(request, response);
 	}
 
