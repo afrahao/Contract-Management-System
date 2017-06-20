@@ -1,100 +1,71 @@
 package com.web;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.*;
+import java.util.*;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.*;
+import javax.servlet.http.*;
 
-import com.model.Contract;
-import com.model.User;
-import com.service.ContractService;
-import com.service.UserService;
-import com.utils.AppException;
+import com.model.*;
+import com.service.*;
+import com.utils.*;
 
-/**
- * Servlet for accessing operator assignment page
- */
 public class ToAssignContractServlet extends HttpServlet {
 
-	/**
-	 * Jump to operator assignment page
-	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// Set the request's character encoding
 		request.setCharacterEncoding("UTF-8");
-		
-		// Declare session
 		HttpSession session = null;
-		// Get session by using request
 		session = request.getSession();
+		//get user id
 		Integer userId = (Integer)session.getAttribute("userId");
 		
-		// If user is not login, jump to login page
-		if (userId == null) {
+		//let user login if it didn't
+		if (userId == null) 
+		{
 			response.sendRedirect("toLogin");
-		}else {
+		}
+		else
+		{
 			// Get contract id
 			int conId = Integer.parseInt(request.getParameter("conId"));
 			
-			try {
-			// Initialize contractService
-			ContractService contractService = new ContractService();
-			// Query contract information according to contract id
-			Contract contract = contractService.getContract(conId);
+			try 
+			{
+				ContractService contractService = new ContractService();
+				Contract contract = contractService.getContract(conId);
+				UserService userService = new UserService();
 			
-			// Initialize userService
-			UserService userService = new UserService();
+				//operator role id
+				int roleId = 2;
+				//administrator role id
+				int RoleId = 1;
+
+				List<User> userList = new ArrayList<User>();
+				List<User> userList1 = new ArrayList<User>();
+				// Get user list according to role id
+				userList = userService.getUserListByRoleId(roleId);
+				userList1 = userService.getUserListByRoleId(RoleId);
 			
-			/*
-			 * Need to get user list with "countersign", "approve", "sign" permissions 
-			 * Operator role have above rights, here using hard-coding way to set operator role's role id to 2,
-			 * RoleId = 2 corresponding to the role's primary key who have rights as above in contract rights table
-			 */
-			int roleId = 2;
-<<<<<<< HEAD
-			int RoleId = 1;
-			// Initialize userList
-			List<User> userList = new ArrayList<User>();
-			List<User> userList1 = new ArrayList<User>();
-			// Get user list according to role id
-			userList = userService.getUserListByRoleId(roleId);
-			userList1 = userService.getUserListByRoleId(RoleId);
+				userList.addAll(userList1);
 			
-			userList.addAll(userList1);
-=======
-			// Initialize userList
-			List<User> userList = new ArrayList<User>();
-			// Get user list according to role id
-			userList = userService.getUserListByRoleId(roleId);
->>>>>>> origin/LiWenjie
-			
-			// Save contract to request
-			request.setAttribute("contract", contract);
-			// Save userList to request
-			request.setAttribute("userList", userList);
-			// Forward to operator assignment page
-			request.getRequestDispatcher("/AssignContract.jsp").forward(request,
-					response);
-			} catch (AppException e) {
+				//send contract to jsp
+				request.setAttribute("contract", contract);
+				///send user list to jsp
+				request.setAttribute("userList", userList);
+				//turn to page assigncontract
+				request.getRequestDispatcher("/AssignContract.jsp").forward(request,response);
+			} 
+			catch (AppException e)
+			{
 				e.printStackTrace();
-				//Redirect to the exception page
 				response.sendRedirect("toError");
 			}
 		}
 	}
 
-	/**
-	 * Process GET requests
-	 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// Call doPost() to process request
 		this.doPost(request, response);
 	}
 }
