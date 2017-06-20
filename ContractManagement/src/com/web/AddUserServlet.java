@@ -1,77 +1,56 @@
 package com.web;
 
-import java.io.IOException;
-
+import java.io.*;
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
+import com.model.*;
+import com.service.*;
+import com.utils.*;
 
-import com.model.User;
-import com.service.UserService;
-import com.utils.AppException;
 
-/**
- * Servlet for registration
- */
 public class AddUserServlet extends HttpServlet {
 
-	/**
-	 * Process the register request
-	 */
-	public void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		//Set the request's character encoding
+	public void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException 
+	{
 		request.setCharacterEncoding("UTF-8");
-		// Get registration information 
-		String name = request.getParameter("name");
-		String password = request.getParameter("password");
-
-		// Declare operation flag
-		boolean flag = false;
-		// Initialize the prompt message 
-		String message = "";
-		/*
-		 * Call methods in business logic layer to process business logic 
-		 */
+		boolean ifRegister = false;
+		//get userName and userPassword
+		String userPassword = request.getParameter("password");
+		String userName = request.getParameter("name");
+		String wrongMessage = "";
 		try {
-			//Instantiate the entity class object User 
-			User user = new User();
-			// Initialize the user business logic class
-			UserService userService = new UserService();
-			// Encapsulate the user information to the user object
-			user.setName(name);
-			user.setPassword(password);
-			// Call business logic layer for user registration 
-			flag = userService.register(user);
-			if (flag) { // Registration Successful
-				// Set prompt message
-				message = "Registration success";
-				request.setAttribute("message", message); // Save prompt message into request 
-				// Forward to the registration page
-				request.getRequestDispatcher("/AddUser.jsp").forward(request,
-						response);
-			} else { // Registration failed
-				// Set prompt message
-				message = "Registration failed";
-				request.setAttribute("message", message); // Save prompt message into request 
-				// Forward to the registration page
-				request.getRequestDispatcher("/AddUser.jsp").forward(request,
-						response);
+			User myuser = new User();
+			UserService myuserService = new UserService();
+			//set the user's userName and userPassword
+			myuser.setName(userName);
+			myuser.setPassword(userPassword);
+			ifRegister = myuserService.register(myuser);
+			// Registration Successful
+			if (ifRegister) 
+			{
+				wrongMessage = "Success register";
+				//send the wrong wrongMessage
+				request.setAttribute("message", wrongMessage);
+				request.getRequestDispatcher("/AddUser.jsp").forward(request,response);
 			}
-		} catch (AppException e) {
+			// Registration failed
+			else 
+			{ 
+				wrongMessage = "Failed to register";
+				//send wrong message
+				request.setAttribute("message", wrongMessage);
+				request.getRequestDispatcher("/AddUser.jsp").forward(request,response);
+			}
+		}
+		catch (AppException e)
+		{
 			e.printStackTrace();
-			// Redirect to the exception page
 			response.sendRedirect("toError");
 		}
 	}
 
-	/**
-	 * Process the GET requests
-	 */
-	public void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// Call doPost() to process request
+	public void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException
+	{
 		this.doPost(request, response);
 	}
 }
