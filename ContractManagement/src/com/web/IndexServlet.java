@@ -1,12 +1,9 @@
 package com.web;
 
-import java.io.IOException;
+import java.io.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.PrintWriter;
 
 public class IndexServlet extends HttpServlet
 {
@@ -15,9 +12,10 @@ public class IndexServlet extends HttpServlet
 		this.doGet(request, response);
 		
 	}
+	
 	public void doGet(HttpServletRequest request,HttpServletResponse response)throws ServletException,IOException
 	{
-		request.getRequestDispatcher("/index.jsp")
-		.forward(request, response);
+		//turn to jsp
+		request.getRequestDispatcher("/index.jsp").forward(request, response);
 	}
 }
