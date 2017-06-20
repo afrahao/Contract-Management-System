@@ -1,47 +1,33 @@
 package com.web;
 
-import java.io.IOException;
+import java.io.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-/**
- * Servlet for accessing contract operator page
- */
 public class OperatorFrameServlet extends HttpServlet {
 
-	/**
-	 * Jump to contract operator page
-	 */
-	public void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// Set character set of request to "UTF-8"
+	public void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException 
+	{
 		request.setCharacterEncoding("UTF-8");
-		
-		// Declare session
 		HttpSession session = null;
-		// Get session by using request object
 		session = request.getSession();
+		//get user id
 		Integer userId = (Integer)session.getAttribute("userId");
 		
-		// If the user is not logged in, then jump to the login page
-		if (userId == null) {
+		//let user login if not
+		if (userId == null) 
+		{
 			response.sendRedirect("toLogin");
-		}else {
-			// Forward to the contract operator page
+		}
+		else
+		{
+			//turn to operator frame
 			request.getRequestDispatcher("/OperatorFrame.jsp").forward(request, response);
 		}
 	}
 	
-	/**
-	 * Process GET requests
-	 */
-	public void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// Call doPost() to process request
+	public void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException 
+	{
 		this.doPost(request, response);
 	}
 }
