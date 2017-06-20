@@ -1,75 +1,54 @@
 package com.web;
 
-import java.io.IOException;
+import java.io.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+import com.model.*;
+import com.service.*;
+import com.utils.*;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import com.model.ConProcess;
-import com.service.ContractService;
-import com.utils.AppException;
-
-/**
- * Servlet for countersign contract
- */
 public class CountersignOpinionServlet extends HttpServlet {
 
-	/**
-	 * Process Post requests of countersign contract
-	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// Set the request's character encoding
 		request.setCharacterEncoding("UTF-8");
-		
-		// Declare session
 		HttpSession session = null;
-		// Get session by using request
 		session = request.getSession();
+		//get user id
 		Integer userId = (Integer)session.getAttribute("userId");
 		
-		// If user is not login, jump to login page
-		if (userId == null) {
+		//let user login if not
+		if (userId == null) 
+		{
 			response.sendRedirect("toLogin");
 		} else {
 			
-			// Get contract id
+			//get contract id and content
 			int conId = Integer.parseInt(request.getParameter("conId"));
-			// Get countersign opinion
 			String content = request.getParameter("content");
 			
-			// Instantiate conProcess object for  encapsulates countersign information
+			//create a process
 			ConProcess conProcess = new ConProcess();
 			conProcess.setConId(conId);
 			conProcess.setUserId(userId);
 			conProcess.setContent(content);
 			
 			try {
-				// Initialize contractService
 				ContractService contractService = new ContractService();
-				// Call business logic layer to do contract countersign
+				//countersign contract
 				contractService.counterSign(conProcess);
-				
-				// After countersigned,redirect to page of contract to be countersigned
+				//turn to jsp
 				response.sendRedirect("countersignContractList");
 
 			} catch (AppException e) {
 				e.printStackTrace();
-				// Redirect to the exception page
 				response.sendRedirect("toError");
 			}
 		}
 	}
 
-	/**
-	 * Process GET requests
-	 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// Call doPost() to process request
 		this.doPost(request, response);
 	}
 }
