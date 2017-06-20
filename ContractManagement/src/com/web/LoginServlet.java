@@ -1,96 +1,67 @@
 package com.web;
 
-import java.io.IOException;
-<<<<<<< HEAD
-import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.List;
-=======
->>>>>>> origin/LiWenjie
 
+import com.model.*;
+import com.service.*;
+import com.utils.*;
+import java.io.*;
+import java.text.*;
+import java.util.*;
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import javax.swing.JOptionPane;
+import javax.servlet.http.*;
+import javax.swing.*;
 
-<<<<<<< HEAD
-import com.model.ConBusiModel;
-import com.model.Contract;
-import com.model.Role;
-import com.service.ContractService;
-=======
-import com.model.Role;
->>>>>>> origin/LiWenjie
-import com.service.UserService;
-import com.utils.AppException;
-
-/**
- * Login Servlet
- */
+//Login
 public class LoginServlet extends HttpServlet {
 
-	/**
-	 *  Process the POST login request
-	 */
+	
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// Set request's character encoding
+		int myId = -2;
 		request.setCharacterEncoding("UTF-8");
-		//  Get login information
+		//get name and pass word
 		String name = request.getParameter("name");
 		String password = request.getParameter("password");
-
-		// Initialize userId
-		int userId = -1;
-		// Initialize prompt message
 		String message = "";
-		/*
-		 *  Call methods in business logic layer to process business logic 
-		 */
 		try {
-			// Initialize the user business logic class
 			UserService userService = new UserService();
-			// Call business logic layer for user login
-			userId = userService.login(name, password);
-			if (userId > 0) { // login successfully  
-				//  Declare session
+			//try to login using the function in the login layer
+			myId = userService.login(name, password);
+			//if login successfully
+			if (myId > 0) {
 				HttpSession session = null;
-				// Get session by using request
 				session = request.getSession();
-				// Save userId and user name into session
-				session.setAttribute("userId", userId);
+				//get the user's id and name from the jsp
+				session.setAttribute("userId", myId);
 				session.setAttribute("userName", name);
-				// Declare role
-				Role role = null;
-				//Call business logic layer to get role's information
-				role = userService.getUserRole(userId);
-				
-<<<<<<< HEAD
-				// Initialize contractService
+				Role myRole = null;
+				//get the user's myRole
+				myRole = userService.getUserRole(myId);
 				ContractService contractService = new ContractService();
-				// Initialize contractList
+				
 				List<ConBusiModel> contractList = new ArrayList<ConBusiModel>();
+				//get different contracts of the user
 				Contract contractCoun = new Contract();
 				Contract contractFina = new Contract();
 				Contract contractAppr = new Contract();
 				Contract contractSign = new Contract();
 				
-				// Call business logic layer to get list of contract to be countersigned 
-				contractList = contractService.getDhqhtList(userId);
+				//get the user's contracts
+				contractList = contractService.getCountersignList(myId);
 				contractCoun = contractService.FindLatest(contractList);
 				
-				contractList = contractService.getDdghtList(userId);
+				contractList = contractService.getFinalizeList(myId);
 				contractFina = contractService.FindLatest(contractList);
 				
-				contractList = contractService.getDshphtList(userId);
+				contractList = contractService.getApproveList(myId);
 				contractAppr = contractService.FindLatest(contractList);
 				
-				contractList = contractService.getDqdhtList(userId);
+				contractList = contractService.getSignList(myId);
 				contractSign = contractService.FindLatest(contractList);
 				
+				//tip messages
 				String tip1="",tip2="",tip3 = "",tip4 = "";
+				//set the tip messages
 				if(contractCoun != null)
 				{
 					tip1="You have a contract that must be countersigned soon:"+contractCoun.getName()+"\n";
@@ -108,56 +79,48 @@ public class LoginServlet extends HttpServlet {
 				{
 					tip4="You have a contract that must be signed soon:"+contractSign.getName()+"\n";
 				}
-				
-=======
->>>>>>> origin/LiWenjie
-				// Process page jump according to the user's role
-				if ( role == null) {
-					//Redirect to new user page
-					response.sendRedirect("toNewUser");
-				} else if (role.getName().equals("admin")) {
-					//Redirect to administrator page
-					response.sendRedirect("adminFrame");
-				} else if (role.getName().equals("operator")) {
-					//Redirect to operator page 
-					response.sendRedirect("operatorFrame");
-				}
-<<<<<<< HEAD
+				//remind the user
 				if(contractFina !=null || contractAppr!=null ||contractSign!=null ||contractCoun!=null)
 				{
 					JOptionPane.showMessageDialog(null, tip1+tip2+tip3+tip4, "tip", JOptionPane.INFORMATION_MESSAGE);
 				}
-=======
->>>>>>> origin/LiWenjie
-			} else {// Login failed
-				// Set prompt message
+				//if the user has no privilege
+				if ( myRole == null)
+				{
+					response.sendRedirect("toNewUser");
+				}
+				//if the user is the administrator
+				else if (myRole.getName().equals("admin"))
+				{
+					response.sendRedirect("adminFrame");
+				}
+				//if the user is not the administrator
+				else if (myRole.getName().equals("operator")) 
+				{
+					response.sendRedirect("operatorFrame");
+				}
+			// Login failed
+			} else {
 				message = "Incorrect user name or password!";
-				request.setAttribute("message", message); // Save prompt message into request
-				// Save user name into request
+				//send the message
+				request.setAttribute("message", message);
 				request.setAttribute("userName", name);	
-				// Forward to login page
+				//let the user login again
 				request.getRequestDispatcher("/login.jsp").forward(request,
 						response);
 			}
-		} catch (AppException e) {
+		} catch (AppException e) 
+		{
 			e.printStackTrace();
-			// Redirect to exception page
 			response.sendRedirect("toError");
-<<<<<<< HEAD
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
+		} catch (ParseException e)
+		{
 			e.printStackTrace();
-=======
->>>>>>> origin/LiWenjie
 		}
 	}
 
-	/**
-	 * Process GET requests
-	 */
-	public void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// Call doPost() to process request
+	public void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException 
+	{
 		this.doPost(request, response);
 	}
 }
