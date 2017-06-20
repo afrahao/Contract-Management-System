@@ -1,65 +1,48 @@
 package com.web;
 
-import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.io.*;
+import java.text.*;
+import java.util.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+import com.model.*;
+import com.service.*;
+import com.utils.*;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import com.model.Contract;
-import com.service.ContractService;
-import com.utils.AppException;
-
-/**
- * Servlet for finalize contract
- */
 public class FinalizeContractServlet extends HttpServlet {
 
-	/**
-	 * Process Post requests of finalize contract
-	 */
-	public void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// Set the request's character encoding
+	public void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException 
+	{
 		request.setCharacterEncoding("UTF-8");
-
-		// Declare session
 		HttpSession session = null;
-		// Get session by using request
 		session = request.getSession();
+		//get user id
 		Integer userId = (Integer) session.getAttribute("userId");
 
-		// If user is not login, jump to login page
-		if (userId == null) {
+		//let user login if not
+		if (userId == null) 
+		{
 			response.sendRedirect("toLogin");
-		} else {
-			// Get data information of contract
+		}
+		else
+		{
+			// get contract information
 			int conId = Integer.parseInt(request.getParameter("conId"));
 			String name = request.getParameter("name");
 			String customer = request.getParameter("customer");
 			String beginTime = request.getParameter("beginTime");
 			String endTime = request.getParameter("endTime");
 			String content = request.getParameter("content");
-
-			// Instantiate begin and end of java.util.Date type,for accepting
-			// transformed beginTime and endTime
+			
 			Date begin = new Date();
 			Date end = new Date();
-
-			// Define a date format object, transform the time of String type
-			// into java.util.Date data type
 			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-			try {
+			
+			try
+			{
+				//set contract information
 				begin = dateFormat.parse(beginTime);
 				end = dateFormat.parse(endTime);
-
-				// Build a Contract object and assign value for the object's
-				// attribute
 				Contract contract = new Contract();
 				contract.setId(conId);
 				contract.setName(name);
@@ -69,37 +52,32 @@ public class FinalizeContractServlet extends HttpServlet {
 				contract.setContent(content);
 				contract.setUserId(userId);
 
-				// Initialize contractService
 				ContractService contractService = new ContractService();
-				// Call business logic layer to finalize contract
+				//try to finalize contract
 				contractService.finalize(contract);
-
-				// After finalized contract,redirect to pending contract page
+				//turnto jsp
 				response.sendRedirect("finalizeContractList");
-			} catch (ParseException e) {
+			}
+			catch (ParseException e) 
+			{
 				e.printStackTrace();
-				// Initialize prompt message
 				String message = "";
 				message = "Please enter the correct date format!";
-				// Save message to request
+				//send message to jsp
 				request.setAttribute("message", message);
-				// Forward to finalized contract page
-				request.getRequestDispatcher("/FinalizeContract.jsp").forward(
-						request, response);
-			} catch (AppException e) {
+				//turn to jsp
+				request.getRequestDispatcher("/FinalizeContract.jsp").forward(request, response);
+			}
+			catch (AppException e)
+			{
 				e.printStackTrace();
-				// Redirect to the exception page
 				response.sendRedirect("toError");
 			}
 		}
 	}
 
-	/**
-	 * Process GET requests
-	 */
-	public void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// Call doPost() to process request
+	public void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException 
+	{
 		this.doPost(request, response);
 	}
 }
