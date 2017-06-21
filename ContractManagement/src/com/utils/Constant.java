@@ -17,10 +17,7 @@ public class Constant {
 	public static final int PROCESS_CSIGN = 1;			// Countersign
 	public static final int PROCESS_APPROVE = 2;		// Approve
 	public static final int PROCESS_SIGN = 3;			// Sign
-<<<<<<< HEAD
 	public static final int PROCESS_ASSIGN = 4;			// Sign
-=======
->>>>>>> origin/LiWenjie
 	
 	//Contract process table's state[t_contract_process.state]
 	public static final int UNDONE = 0;					// Unfinished
