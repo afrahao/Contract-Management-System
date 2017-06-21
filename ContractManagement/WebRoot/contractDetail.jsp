@@ -18,11 +18,7 @@
 				contract = (ConDetailBusiModel)request.getAttribute("conDetailBusiModel");
 			}
 		%>
-<<<<<<< HEAD
 
-=======
-			
->>>>>>> origin/LiWenjie
 			<div class="viewbox">
 				<div class="title">
 					<%=contract.getName()%>
