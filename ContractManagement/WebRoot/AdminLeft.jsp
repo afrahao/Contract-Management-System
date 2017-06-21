@@ -15,61 +15,33 @@
 				System Management
 			</dt>
 			<dd>
-<<<<<<< HEAD
 				<a href="userManagement" target="main">User Management</a>
 			</dd>
 			<dd>
-				<a href="#">Role Management</a>
-=======
-				<a href="userList.jsp" target="main">User Management</a>
-			</dd>
-			<dd>
 				<a href="roleList" target="main">Role Management</a>
->>>>>>> origin/LiWenjie
 			</dd>		
 			<dd>
 				<a href="configurePermissionList" target="main">Configure Permission</a>
 			</dd>
 			<dd>
-				<a href="#">Log Management</a>
+				<a href="toLogManagement" target="main">Log Management</a>
 			</dd>	
 		</dl>
 		<dl>
 			<dt>
-<<<<<<< HEAD
-				Contract Management
-			</dt>
-			<dd>
-				<a href="#" target="main">Process Configuration</a>
-			</dd>
-			<dd>
-				<a href="operatorFrame" target="_top">Operate Contract</a>
-			</dd>
-			
-			<dd>
-				<a href="#">Query Process</a>
-			</dd>
-			<dd>
-				<a href="#">Contract Info</a>
-			</dd>
-			<dd>
-				<a href="#">Customer Info</a>
-=======
 				Information Management
 			</dt>
-			
-			
-			
-			
 			<dd>
 				<a href="toContractInfo" target="main">Contract Info</a>
 			</dd>
+			<dd>
+					<a href="toQProcess" target="main">Query Process</a>
+				</dd>
 			<dd>
 				<a href="toCustomerInfo" target="main">Customer Info</a>
 			</dd>
 			<dd>
 				<a href="operatorFrame" target="_top">Operate Contract</a>
->>>>>>> origin/LiWenjie
 			</dd>
 		</dl>
 	</div>
