@@ -13,7 +13,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			type="text/css" />
 	</head>
 	
-	<frameset rows="100,*" frameborder="no" border="0">
+	<frameset rows="140,*" frameborder="no" border="0">
 		<frame src="LogHeader.jsp"  scrolling="no"/>
 		<frame src="welcome.jsp"  scrolling="no"/>
 	</frameset>
