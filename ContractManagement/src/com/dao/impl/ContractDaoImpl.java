@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.dao.ContractDao;
-import com.model.ConState;
 import com.model.Contract;
 import com.utils.AppException;
 import com.utils.DBUtil;
@@ -345,4 +344,5 @@ public class ContractDaoImpl implements ContractDao {
 		}
 		
 	}
+	
 }
