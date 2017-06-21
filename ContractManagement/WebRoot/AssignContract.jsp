@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>Assign operator</title>
+		<title>Assign Contract</title>
 		<link href="css/style.css" rel="stylesheet" media="screen"
 			type="text/css" />
 		<script type="text/javascript">
@@ -71,7 +71,7 @@
 			Contract contract = (Contract)request.getAttribute("contract");
 		%>
 		<div class="mtitle">
-			Assign operator: <%=contract.getName()%>
+			Assign Contract: <%=contract.getName()%>
 		</div>
 		<%
 			List<User> userList = (List<User>)request.getAttribute("userList");
