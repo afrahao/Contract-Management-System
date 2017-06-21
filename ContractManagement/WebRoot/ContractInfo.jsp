@@ -6,7 +6,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<link href="css/style.css" rel="stylesheet" media="screen"
 			type="text/css" />
-		<title>List of contract to be finalized</title>
+		<title>Contract Information</title>
 		<!-- Use JavaScript script to open a new window display information when preview-->
 		<script>
 			function preview(url) {
@@ -17,17 +17,10 @@
 
 	<body>
 		<div class="mtitle">
-			Contract to be finalized
+			Contract Information
 		</div>
 		
-		<div class="search">
-			<form>
-				Search contract to be finalized
-				<input value="Enter the search conditions.." />
-				&nbsp;&nbsp;
-				<input type="submit" value="Search" class="search-submit"/> <br />
-			</form>
-		</div>
+		
 		
 		<div class="list">
 		  <table>
@@ -68,17 +61,6 @@
 				}
 			 %>
 		  </table>
-		</div>
-
-		<div align="right" class="pagelist">					
-			<a href="#"><img src="images/page/first.png"  alt="" /></a> &nbsp;
-			<a href="#"><img src="images/page/pre.png"  alt="" /></a>&nbsp;
-			<a href="#"><img src="images/page/next.png"  alt="" /></a>&nbsp;
-			<a href="#"><img src="images/page/last.png"  alt="" /></a>&nbsp;
-					
-			<span class="pageinfo">
-				Total&nbsp;<strong>2</strong>&nbsp;pages&nbsp;<strong>13</strong>&nbsp;records
-			</span>		
 		</div>
 	</body>
 </html>
