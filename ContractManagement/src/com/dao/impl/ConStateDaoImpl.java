@@ -9,7 +9,6 @@ import java.util.List;
 
 import com.dao.ConStateDao;
 import com.model.ConState;
-import com.model.Role;
 import com.utils.AppException;
 import com.utils.DBUtil;
 
@@ -167,7 +166,7 @@ public class ConStateDaoImpl implements ConStateDao {
 	 * 
 	 * @param con_id Countract id
 	 * @param type Operation type
-	 * @return boolean Exist return true锛宱therwise return false
+	 * @return boolean Exist return true，otherwise return false
 	 * @throws AppException
 	 */
 	public boolean isExist(int con_id, int type) throws AppException {
@@ -210,6 +209,7 @@ public class ConStateDaoImpl implements ConStateDao {
 		}
 		return flag;
 	}
+	
 	public List<ConState> getAll() throws AppException {
 		// Initialiaze roleList
 		List<ConState> stateList = new ArrayList<ConState>();
@@ -249,6 +249,5 @@ public class ConStateDaoImpl implements ConStateDao {
 		}
 		return stateList;
 	}
-
 
 }
