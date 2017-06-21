@@ -14,15 +14,7 @@
 			User permission list
 		</div>
 
-		<div class="search">
-			<form>
-				Search user:
-				<input value="Enter search conditions.." />
-				&nbsp;&nbsp;
-				<input type="submit" value="Search" class="search-submit" />
-				<br />
-			</form>
-		</div>
+		
 
 		<div class="list">
 			<table>
@@ -57,32 +49,12 @@
 				</tr>
 				<%
 					}
-<<<<<<< HEAD
 				%>
-=======
-				 %>
-					
->>>>>>> origin/LiWenjie
 				<tr>
 					<td colspan="3">
 					</td>
 				</tr>
 			</table>
-		</div>
-
-		<div align="right" class="pagelist">					
-<<<<<<< HEAD
-			<a href="#"><img src="images/page/first.png"  alt="" /></a> &nbsp;
-			<a href="#"><img src="images/page/pre.png"  alt="" /></a>&nbsp;
-			<a href="#"><img src="images/page/next.png"  alt="" /></a>&nbsp;
-			<a href="#"><img src="images/page/last.png"  alt="" /></a>&nbsp;
-=======
-			
->>>>>>> origin/LiWenjie
-					
-			<span class="pageinfo">
-				Total&nbsp;<strong>2</strong>&nbsp;pages&nbsp;<strong>13</strong>&nbsp;records
-			</span>	
 		</div>
 	</body>
 </html>
