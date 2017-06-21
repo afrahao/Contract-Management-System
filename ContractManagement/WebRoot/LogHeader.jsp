@@ -7,8 +7,5 @@
 		   &nbsp;|&nbsp; [<a href="toRegister" target="_top">Register</a>]
 		</span>
 	</div>
-
-	<h1>
 		<img src="images/logo_title.png" alt="Contract Management System" />
-	</h1>
 </div>
