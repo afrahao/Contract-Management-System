@@ -67,8 +67,7 @@ public class ConState {
 	public void setDel(int del) {
 		this.del = del;
 	}
-<<<<<<< HEAD
-=======
+	
 	public String getState(int type){
 		if(type==1)
 			return "draft";
@@ -81,5 +80,4 @@ public class ConState {
 		else
 			return "signed";
 	}
->>>>>>> origin/LiWenjie
 }
