@@ -16,13 +16,9 @@
 				<dd>
 					<a href="toDraft" target="main">Draft Contract</a>
 				</dd>
-<<<<<<< HEAD
-				
-=======
 				<dd>
 					<a href="toTerminateContract" target="main">Termination  Contract</a>
 				</dd>
->>>>>>> origin/LiWenjie
 				</dl>
 				<dl>
 				<dt>
@@ -35,11 +31,7 @@
 					<a href="finalizedContract" target="main">Finalized Contract</a>
 				</dd>
 				<dd>
-<<<<<<< HEAD
-					<a href="#">Query Process</a>
-=======
 					<a href="toQProcess" target="main">Query Process</a>
->>>>>>> origin/LiWenjie
 				</dd>
 			</dl>
 			<dl>
@@ -72,11 +64,7 @@
 					<a href="assignContractList" target="main">Contract to be Assigned</a>
 				</dd>
 				<dd>
-<<<<<<< HEAD
 					<a href="assignedContract" target="main">Assigned Contract</a>
-=======
-					<a href="# ">Assigned Contract</a>
->>>>>>> origin/LiWenjie
 				</dd>
 			</dl>
 			<dl>
